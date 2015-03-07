@@ -1,0 +1,28 @@
+{
+  "name": "rikbruil/doctrine-specification",
+  "type": "library",
+  "keywords": ["doctrine", "repository", "specification"],
+  "licence": "MIT",
+  "authors": [
+    {
+      "name": "Rik Bruil",
+      "email": "rik.bruil@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {"Rb\\DoctrineSpecification\\": "src/"}
+  },
+  "autoload-dev": {
+    "psr-4": {"spec\\Rb\\DoctrineSpecification\\": "spec/"}
+  },
+  "require": {
+    "php": ">=5.5",
+    "doctrine/orm": "~2.2"
+  },
+  "require-dev": {
+    "phpspec/phpspec": "~2.1@dev",
+    "henrikbjorn/phpspec-code-coverage": "~1.0",
+    "satooshi/php-coveralls": "~0.6"
+  }
+}
