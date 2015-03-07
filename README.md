@@ -137,6 +137,15 @@ class SomeService
 }
 ```
 
+## Requirements
+
+Doctrine-Specification requires:
+
+- PHP 5.5+
+- Doctrine 2.2
+
+However, I am planning to lower this to PHP 5.4+.
+
 ## License
 
 Doctrine-Specification is licensed under the MIT License - see the `LICENSE` file for details
