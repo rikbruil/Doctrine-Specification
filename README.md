@@ -1,7 +1,6 @@
 # Doctrine Specification [![Build Status](https://travis-ci.org/rikbruil/Doctrine-Specification.svg)](https://travis-ci.org/rikbruil/Doctrine-Specification)
 
 [![Coverage Status](https://coveralls.io/repos/rikbruil/Doctrine-Specification/badge.svg?branch=master)](https://coveralls.io/r/rikbruil/Doctrine-Specification?branch=master)
-[![Latest Stable Version](https://poser.pugx.org/rikbruil/Doctrine-Specification/version.svg)](https://packagist.org/packages/rikbruil/doctrine-specification)
 [![Latest Stable Version](https://poser.pugx.org/rikbruil/doctrine-specification/v/stable.svg)](https://packagist.org/packages/rikbruil/doctrine-specification) 
 [![Total Downloads](https://poser.pugx.org/rikbruil/doctrine-specification/downloads.svg)](https://packagist.org/packages/rikbruil/doctrine-specification) 
 [![Latest Unstable Version](https://poser.pugx.org/rikbruil/doctrine-specification/v/unstable.svg)](https://packagist.org/packages/rikbruil/doctrine-specification) 
