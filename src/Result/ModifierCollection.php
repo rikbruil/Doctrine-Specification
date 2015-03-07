@@ -1,14 +1,14 @@
 <?php
 
-namespace Rb\DoctrineSpecification\Result;
+namespace Rb\Doctrine\Specification\Result;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\AbstractQuery;
-use Rb\DoctrineSpecification\Exception\InvalidArgumentException;
+use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
 
 /**
  * CollectionResultModifierInterface allows to compose one/more ResultModifier classes
- * @package Rb\DoctrineSpecification\Result
+ * @package Rb\Doctrine\Specification\Result
  */
 class ModifierCollection extends ArrayCollection implements ModifierInterface
 {

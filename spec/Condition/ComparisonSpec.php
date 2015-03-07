@@ -1,12 +1,12 @@
 <?php
 
-namespace spec\Rb\DoctrineSpecification\Condition;
+namespace spec\Rb\Doctrine\Specification\Condition;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\QueryBuilder;
-use Rb\DoctrineSpecification\Condition\Comparison;
-use Rb\DoctrineSpecification\Condition\ModifierInterface;
-use Rb\DoctrineSpecification\Exception\InvalidArgumentException;
+use Rb\Doctrine\Specification\Condition\Comparison;
+use Rb\Doctrine\Specification\Condition\ModifierInterface;
+use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

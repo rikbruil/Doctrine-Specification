@@ -1,8 +1,8 @@
 <?php
 
-namespace Rb\DoctrineSpecification\Condition;
+namespace Rb\Doctrine\Specification\Condition;
 
-use Rb\DoctrineSpecification\Exception\InvalidArgumentException;
+use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
 
 class NotEquals extends Comparison
 {

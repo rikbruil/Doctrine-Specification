@@ -1,12 +1,12 @@
 <?php
 
-namespace spec\Rb\DoctrineSpecification\Logic;
+namespace spec\Rb\Doctrine\Specification\Logic;
 
 use Doctrine\ORM\Query;
 use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
-use Rb\DoctrineSpecification\Condition\ModifierInterface;
-use Rb\DoctrineSpecification\SpecificationInterface;
+use Rb\Doctrine\Specification\Condition\ModifierInterface;
+use Rb\Doctrine\Specification\SpecificationInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

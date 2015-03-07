@@ -1,11 +1,11 @@
 <?php
 
-namespace spec\Rb\DoctrineSpecification\Query;
+namespace spec\Rb\Doctrine\Specification\Query;
 
 use Doctrine\ORM\QueryBuilder;
-use Rb\DoctrineSpecification\Exception\InvalidArgumentException;
-use Rb\DoctrineSpecification\Query\ModifierInterface;
-use Rb\DoctrineSpecification\Result;
+use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
+use Rb\Doctrine\Specification\Query\ModifierInterface;
+use Rb\Doctrine\Specification\Result;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

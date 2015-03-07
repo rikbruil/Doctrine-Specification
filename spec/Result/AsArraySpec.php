@@ -1,10 +1,10 @@
 <?php
 
-namespace spec\Rb\DoctrineSpecification\Result;
+namespace spec\Rb\Doctrine\Specification\Result;
 
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\Query;
-use Rb\DoctrineSpecification\Result\ModifierInterface;
+use Rb\Doctrine\Specification\Result\ModifierInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

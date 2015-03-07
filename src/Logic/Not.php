@@ -1,16 +1,16 @@
 <?php
 
-namespace Rb\DoctrineSpecification\Logic;
+namespace Rb\Doctrine\Specification\Logic;
 
 use Doctrine\ORM\QueryBuilder;
-use Rb\DoctrineSpecification\Condition;
-use Rb\DoctrineSpecification\Query;
-use Rb\DoctrineSpecification\SpecificationInterface;
-use Rb\DoctrineSpecification\SupportInterface;
+use Rb\Doctrine\Specification\Condition;
+use Rb\Doctrine\Specification\Query;
+use Rb\Doctrine\Specification\SpecificationInterface;
+use Rb\Doctrine\Specification\SupportInterface;
 
 /**
  * Class Not negates whatever specification/filter is passed inside it
- * @package Rb\DoctrineSpecification\Logic
+ * @package Rb\Doctrine\Specification\Logic
  */
 class Not implements SpecificationInterface
 {

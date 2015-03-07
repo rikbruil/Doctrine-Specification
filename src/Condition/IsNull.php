@@ -1,6 +1,6 @@
 <?php
 
-namespace Rb\DoctrineSpecification\Condition;
+namespace Rb\Doctrine\Specification\Condition;
 
 use Doctrine\ORM\QueryBuilder;
 

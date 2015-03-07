@@ -1,9 +1,9 @@
 <?php
 
-namespace Rb\DoctrineSpecification;
+namespace Rb\Doctrine\Specification;
 
-use Rb\DoctrineSpecification\Condition;
-use Rb\DoctrineSpecification\Query;
+use Rb\Doctrine\Specification\Condition;
+use Rb\Doctrine\Specification\Query;
 
 /**
  * SpecificationInterface can be used to implement custom specifications

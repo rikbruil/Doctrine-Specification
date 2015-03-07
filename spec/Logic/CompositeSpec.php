@@ -1,13 +1,13 @@
 <?php
 
-namespace spec\Rb\DoctrineSpecification\Logic;
+namespace spec\Rb\Doctrine\Specification\Logic;
 
 use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
-use Rb\DoctrineSpecification\Condition;
-use Rb\DoctrineSpecification\Exception\InvalidArgumentException;
-use Rb\DoctrineSpecification\SpecificationInterface;
-use Rb\DoctrineSpecification\Query;
+use Rb\Doctrine\Specification\Condition;
+use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
+use Rb\Doctrine\Specification\SpecificationInterface;
+use Rb\Doctrine\Specification\Query;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

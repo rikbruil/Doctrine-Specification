@@ -1,8 +1,8 @@
 <?php
 
-namespace Rb\DoctrineSpecification\Query;
+namespace Rb\Doctrine\Specification\Query;
 
-use Rb\DoctrineSpecification\Exception\InvalidArgumentException;
+use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
 
 class InnerJoin extends Join
 {
