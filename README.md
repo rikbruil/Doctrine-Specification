@@ -12,8 +12,6 @@ Since I like Doctrine's Paginator object, I wanted to be able to use that in com
 ## Usage
 
 ```php
-<?php
-
 // Not using the lib
 $qb = $this->em->getRepository('Advertisement')
     ->createQueryBuilder('r');
@@ -35,8 +33,6 @@ return $qb->where('r.ended = 0')
 ```
 
 ```php
-<?php
-
 // Using the lib
 $spec = new AndX(
     new Equals('ended', 0),
@@ -56,7 +52,6 @@ return $this->em->getRepository('Advertisement')->match($spec)->execute();
 A bonus of this pattern is composition, which makes specifications very reusable:
 
 ```php
-<?php
 
 use Entity\Advertisement;
 
