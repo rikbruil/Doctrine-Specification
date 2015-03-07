@@ -1,12 +1,12 @@
 <?php
 
-namespace spec\Rb\DoctrineSpecification\Result;
+namespace spec\Rb\Doctrine\Specification\Result;
 
 use Doctrine\ORM\AbstractQuery;
-use Rb\DoctrineSpecification\Exception\InvalidArgumentException;
-use Rb\DoctrineSpecification\Result;
-use Rb\DoctrineSpecification\Query;
-use Rb\DoctrineSpecification\SpecificationInterface;
+use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
+use Rb\Doctrine\Specification\Result;
+use Rb\Doctrine\Specification\Query;
+use Rb\Doctrine\Specification\SpecificationInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

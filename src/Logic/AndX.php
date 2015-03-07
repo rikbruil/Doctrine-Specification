@@ -1,8 +1,8 @@
 <?php
 
-namespace Rb\DoctrineSpecification\Logic;
+namespace Rb\Doctrine\Specification\Logic;
 
-use Rb\DoctrineSpecification\SpecificationInterface;
+use Rb\Doctrine\Specification\SpecificationInterface;
 
 /**
  * AndX specification lets you compose a new Specification with other specification classes

@@ -11,5 +11,5 @@ code_coverage:
 
 suites:
     main:
-        namespace: Rb\DoctrineSpecification
-        psr4_prefix: Rb\DoctrineSpecification
+        namespace: Rb\Doctrine\Specification
+        psr4_prefix: Rb\Doctrine\Specification

@@ -1,15 +1,15 @@
 <?php
 
-namespace Rb\DoctrineSpecification\Logic;
+namespace Rb\Doctrine\Specification\Logic;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
-use Rb\DoctrineSpecification\Condition;
-use Rb\DoctrineSpecification\Query;
-use Rb\DoctrineSpecification\Exception\InvalidArgumentException;
-use Rb\DoctrineSpecification\SpecificationInterface;
-use Rb\DoctrineSpecification\SupportInterface;
+use Rb\Doctrine\Specification\Condition;
+use Rb\Doctrine\Specification\Query;
+use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
+use Rb\Doctrine\Specification\SpecificationInterface;
+use Rb\Doctrine\Specification\SupportInterface;
 
 /**
  * Class Composite

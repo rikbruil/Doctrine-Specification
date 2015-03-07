@@ -1,13 +1,13 @@
 <?php
 
-namespace Rb\DoctrineSpecification\Query;
+namespace Rb\Doctrine\Specification\Query;
 
 use Doctrine\ORM\QueryBuilder;
-use Rb\DoctrineSpecification\Exception\InvalidArgumentException;
+use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
 
 /**
  * Class OrderBy
- * @package Rb\DoctrineSpecification\Query
+ * @package Rb\Doctrine\Specification\Query
  */
 class OrderBy implements ModifierInterface
 {

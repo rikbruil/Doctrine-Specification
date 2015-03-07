@@ -1,10 +1,10 @@
 <?php
 
-namespace spec\Rb\DoctrineSpecification\Condition;
+namespace spec\Rb\Doctrine\Specification\Condition;
 
 use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
-use Rb\DoctrineSpecification\Condition\ModifierInterface;
+use Rb\Doctrine\Specification\Condition\ModifierInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

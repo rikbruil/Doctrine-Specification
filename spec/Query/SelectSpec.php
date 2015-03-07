@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Rb\DoctrineSpecification\Query;
+namespace spec\Rb\Doctrine\Specification\Query;
 
 use Doctrine\ORM\QueryBuilder;
 use PhpSpec\ObjectBehavior;
