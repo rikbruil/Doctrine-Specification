@@ -2,7 +2,7 @@
   "name": "rikbruil/doctrine-specification",
   "type": "library",
   "keywords": ["doctrine", "repository", "specification"],
-  "licence": "MIT",
+  "license": "MIT",
   "authors": [
     {
       "name": "Rik Bruil",
@@ -24,5 +24,10 @@
     "phpspec/phpspec": "~2.1@dev",
     "henrikbjorn/phpspec-code-coverage": "~1.0",
     "satooshi/php-coveralls": "~0.6"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
   }
 }
