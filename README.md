@@ -1,4 +1,6 @@
 # Doctrine Specification
+[![Build Status](https://travis-ci.org/rikbruil/Doctrine-Specification.svg)](https://travis-ci.org/rikbruil/Doctrine-Specification)
+
 Doctrine [Specification pattern][specification_pattern] for building queries dynamically and with re-usable classes for composition.
 
 ## Usage
