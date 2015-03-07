@@ -4,9 +4,7 @@ namespace spec\Rb\Doctrine\Specification\Condition;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\QueryBuilder;
-use Rb\Doctrine\Specification\Condition\Comparison;
 use Rb\Doctrine\Specification\Condition\ModifierInterface;
-use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
 use PhpSpec\ObjectBehavior;
 
 class NotEqualsSpec extends ObjectBehavior
@@ -44,4 +42,5 @@ class NotEqualsSpec extends ObjectBehavior
         $queryBuilder->setParameter('comparison_10', 18)->shouldBeCalled();
 
         $this->getCondition($queryBuilder, 'x')->shouldReturn('x.age <> :comparison_10');
-    }}
+    }
+}
