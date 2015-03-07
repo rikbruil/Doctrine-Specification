@@ -4,6 +4,11 @@
 
 Doctrine [Specification pattern][specification_pattern] for building queries dynamically and with re-usable classes for composition.
 
+This library started out as an adaptation of Benjamin Eberlei's [blog post][blog_post]. I was also inspired by the [Happyr Doctrine-Specification][happyr_spec] code, however this library has some small differences.
+The main one is that SpecificationRepository->match() does not return the results directly, but returns the query object.
+
+Since I like Doctrine's Paginator object, I wanted to be able to use that in combination with the Specification pattern.
+
 ## Usage
 
 ```php
@@ -134,3 +139,5 @@ class SomeService
 ```
 
 [specification_pattern]: http://en.wikipedia.org/wiki/Specification_pattern
+[happyr_spec]: https://github.com/Happyr/Doctrine-Specification
+[blog_post]: http://www.whitewashing.de/2013/03/04/doctrine_repositories.html
