@@ -1,6 +1,8 @@
-# Doctrine Specification
-[![Build Status](https://travis-ci.org/rikbruil/Doctrine-Specification.svg)](https://travis-ci.org/rikbruil/Doctrine-Specification)
+# Doctrine Specification [![Build Status](https://travis-ci.org/rikbruil/Doctrine-Specification.svg)](https://travis-ci.org/rikbruil/Doctrine-Specification)
+
 [![Coverage Status](https://coveralls.io/repos/rikbruil/Doctrine-Specification/badge.svg)](https://coveralls.io/r/rikbruil/Doctrine-Specification)
+[![Latest Stable Version](https://poser.pugx.org/rikbruil/Doctrine-Specification/version.svg)](https://packagist.org/packages/rikbruil/doctrine-specification)
+[![License](https://poser.pugx.org/rikbruil/Doctrine-Specification/license.svg)](https://packagist.org/packages/rikbruil/doctrine-specification)
 
 Doctrine [Specification pattern][specification_pattern] for building queries dynamically and with re-usable classes for composition.
 
@@ -10,6 +12,8 @@ The main one is that SpecificationRepository->match() does not return the result
 Since I like Doctrine's Paginator object, I wanted to be able to use that in combination with the Specification pattern.
 
 ## Usage
+
+Install the latest version with `composer require rikbruil/doctrine-specification`
 
 ```php
 // Not using the lib
