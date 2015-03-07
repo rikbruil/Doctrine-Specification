@@ -7,7 +7,6 @@ use Doctrine\ORM\QueryBuilder;
 use Rb\Doctrine\Specification\Condition\ModifierInterface;
 use Rb\Doctrine\Specification\Condition\Like;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class LikeSpec extends ObjectBehavior
 {

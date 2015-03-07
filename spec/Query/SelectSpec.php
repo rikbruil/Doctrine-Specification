@@ -4,7 +4,6 @@ namespace spec\Rb\Doctrine\Specification\Query;
 
 use Doctrine\ORM\QueryBuilder;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class SelectSpec extends ObjectBehavior
 {

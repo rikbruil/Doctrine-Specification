@@ -22,8 +22,8 @@ class In implements ModifierInterface
     protected $dqlAlias;
 
     /**
-     * @param string $field
-     * @param mixed $value
+     * @param string      $field
+     * @param mixed       $value
      * @param string|null $dqlAlias
      */
     public function __construct($field, $value, $dqlAlias = null)
@@ -35,8 +35,8 @@ class In implements ModifierInterface
 
     /**
      * Return a string expression which can be used as condition (in WHERE-clause)
-     * @param QueryBuilder $queryBuilder
-     * @param string $dqlAlias
+     * @param  QueryBuilder $queryBuilder
+     * @param  string       $dqlAlias
      * @return string
      */
     public function getCondition(QueryBuilder $queryBuilder, $dqlAlias)
@@ -55,7 +55,7 @@ class In implements ModifierInterface
     }
 
     /**
-     * @param QueryBuilder $queryBuilder
+     * @param  QueryBuilder $queryBuilder
      * @return string
      */
     public function generateParameterName(QueryBuilder $queryBuilder)

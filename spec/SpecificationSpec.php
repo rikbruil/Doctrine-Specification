@@ -9,7 +9,6 @@ use Rb\Doctrine\Specification\Query;
 use Rb\Doctrine\Specification\Result;
 use Rb\Doctrine\Specification\SpecificationInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class SpecificationSpec extends ObjectBehavior
 {
@@ -21,7 +20,6 @@ class SpecificationSpec extends ObjectBehavior
         QueryBuilder $queryBuilder,
         SpecificationInterface $specification
     ) {
-
         $specification->supports($this->className)->willReturn(true);
         $specification->getCondition($queryBuilder, $this->alias)->willReturn($this->condition);
         $specification->modify($queryBuilder, $this->alias)->shouldBeCalled();

@@ -6,7 +6,6 @@ use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\Query;
 use Rb\Doctrine\Specification\Result\ModifierInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class AsArraySpec extends ObjectBehavior
 {

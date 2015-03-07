@@ -6,9 +6,7 @@ use Doctrine\ORM\AbstractQuery;
 use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
 use Rb\Doctrine\Specification\Result;
 use Rb\Doctrine\Specification\Query;
-use Rb\Doctrine\Specification\SpecificationInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class ModifierCollectionSpec extends ObjectBehavior
 {

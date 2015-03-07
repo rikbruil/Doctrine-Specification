@@ -32,9 +32,9 @@ class OrderBy implements ModifierInterface
     protected $dqlAlias;
 
     /**
-     * @param string $field
-     * @param string $order
-     * @param string|null $dqlAlias
+     * @param  string                   $field
+     * @param  string                   $order
+     * @param  string|null              $dqlAlias
      * @throws InvalidArgumentException
      */
     public function __construct($field, $order = self::ASC, $dqlAlias = null)
@@ -50,8 +50,8 @@ class OrderBy implements ModifierInterface
 
     /**
      * Method to modify the given QueryBuilder object
-     * @param QueryBuilder $queryBuilder
-     * @param string $dqlAlias
+     * @param  QueryBuilder $queryBuilder
+     * @param  string       $dqlAlias
      * @return void
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)

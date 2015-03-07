@@ -41,9 +41,9 @@ class Join implements ModifierInterface
     private $type = self::JOIN;
 
     /**
-     * @param string $field
-     * @param string $newAlias
-     * @param string|null $dqlAlias
+     * @param  string                   $field
+     * @param  string                   $newAlias
+     * @param  string|null              $dqlAlias
      * @throws InvalidArgumentException
      */
     public function __construct($field, $newAlias, $dqlAlias = null)
@@ -54,7 +54,7 @@ class Join implements ModifierInterface
     }
 
     /**
-     * @param string $type
+     * @param  string                   $type
      * @throws InvalidArgumentException
      */
     public function setType($type)
@@ -72,8 +72,8 @@ class Join implements ModifierInterface
 
     /**
      * Method to modify the given QueryBuilder object
-     * @param QueryBuilder $queryBuilder
-     * @param string $dqlAlias
+     * @param  QueryBuilder $queryBuilder
+     * @param  string       $dqlAlias
      * @return void
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)

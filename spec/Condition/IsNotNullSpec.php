@@ -6,7 +6,6 @@ use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
 use Rb\Doctrine\Specification\Condition\ModifierInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class IsNotNullSpec extends ObjectBehavior
 {

@@ -8,7 +8,6 @@ use Rb\Doctrine\Specification\Condition\Comparison;
 use Rb\Doctrine\Specification\Condition\ModifierInterface;
 use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class ComparisonSpec extends ObjectBehavior
 {

@@ -31,7 +31,7 @@ class Composite extends ArrayCollection implements SpecificationInterface
     private $type;
 
     /**
-     * @param string $type
+     * @param string                                                $type
      * @param Query\ModifierInterface[]|Condition\ModifierInterface $children
      */
     public function __construct($type, array $children = [])
@@ -42,7 +42,7 @@ class Composite extends ArrayCollection implements SpecificationInterface
 
     /**
      * Set the type of comparison
-     * @param string $type
+     * @param  string                   $type
      * @return $this
      * @throws InvalidArgumentException
      */
@@ -54,11 +54,12 @@ class Composite extends ArrayCollection implements SpecificationInterface
         }
 
         $this->type = $type;
+
         return $this;
     }
 
     /**
-     * @param Query\ModifierInterface|Condition\ModifierInterface $value
+     * @param  Query\ModifierInterface|Condition\ModifierInterface $value
      * @return bool
      * @throws InvalidArgumentException
      */
@@ -77,20 +78,21 @@ class Composite extends ArrayCollection implements SpecificationInterface
     }
 
     /**
-     * @param Query\ModifierInterface[]|Condition\ModifierInterface[] $children
+     * @param  Query\ModifierInterface[]|Condition\ModifierInterface[] $children
      * @return $this
      */
     protected function setChildren(array $children)
     {
         $this->clear();
         array_map([$this, 'add'], $children);
+
         return $this;
     }
 
     /**
      * Try to match this specification with the query builder
-     * @param QueryBuilder $queryBuilder
-     * @param string $dqlAlias
+     * @param  QueryBuilder $queryBuilder
+     * @param  string       $dqlAlias
      * @return Expr
      */
     public function getCondition(QueryBuilder $queryBuilder, $dqlAlias)
@@ -102,7 +104,6 @@ class Composite extends ArrayCollection implements SpecificationInterface
 
             return null;
         };
-
 
         $result = array_filter(array_map($match, $this->toArray()));
         if (empty($result)) {
@@ -117,7 +118,7 @@ class Composite extends ArrayCollection implements SpecificationInterface
 
     /**
      * @param QueryBuilder $queryBuilder
-     * @param string $dqlAlias
+     * @param string       $dqlAlias
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
@@ -132,7 +133,7 @@ class Composite extends ArrayCollection implements SpecificationInterface
 
     /**
      * Check to see if the current specification supports the given class
-     * @param string $className
+     * @param  string  $className
      * @return boolean
      */
     public function supports($className)

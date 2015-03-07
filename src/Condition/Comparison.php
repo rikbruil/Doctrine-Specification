@@ -42,9 +42,9 @@ class Comparison implements ModifierInterface
     private $operator;
 
     /**
-     * @param string $operator
-     * @param string $field
-     * @param string $value
+     * @param string      $operator
+     * @param string      $field
+     * @param string      $value
      * @param string|null $dqlAlias
      *
      * @throws InvalidArgumentException
@@ -71,7 +71,7 @@ class Comparison implements ModifierInterface
      * Return a string expression which can be used as condition (in WHERE-clause)
      *
      * @param QueryBuilder $queryBuilder
-     * @param string $dqlAlias
+     * @param string       $dqlAlias
      *
      * @return string
      */

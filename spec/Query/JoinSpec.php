@@ -7,7 +7,6 @@ use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
 use Rb\Doctrine\Specification\Query\Join;
 use Rb\Doctrine\Specification\Query\ModifierInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class JoinSpec extends ObjectBehavior
 {

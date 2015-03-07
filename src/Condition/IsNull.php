@@ -17,7 +17,7 @@ class IsNull implements ModifierInterface
     protected $dqlAlias;
 
     /**
-     * @param string $field
+     * @param string      $field
      * @param string|null $dqlAlias
      */
     public function __construct($field, $dqlAlias = null)
@@ -28,8 +28,8 @@ class IsNull implements ModifierInterface
 
     /**
      * Return a string expression which can be used as condition (in WHERE-clause)
-     * @param QueryBuilder $queryBuilder
-     * @param string $dqlAlias
+     * @param  QueryBuilder $queryBuilder
+     * @param  string       $dqlAlias
      * @return string
      */
     public function getCondition(QueryBuilder $queryBuilder, $dqlAlias)
@@ -39,6 +39,7 @@ class IsNull implements ModifierInterface
         }
 
         $property = sprintf('%s.%s', $dqlAlias, $this->field);
+
         return (string) $queryBuilder->expr()->isNull($property);
     }
 }

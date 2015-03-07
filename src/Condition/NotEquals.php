@@ -7,9 +7,9 @@ use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
 class NotEquals extends Comparison
 {
     /**
-     * @param string $field
-     * @param string $value
-     * @param string|null $dqlAlias
+     * @param  string                   $field
+     * @param  string                   $value
+     * @param  string|null              $dqlAlias
      * @throws InvalidArgumentException
      */
     public function __construct($field, $value, $dqlAlias = null)

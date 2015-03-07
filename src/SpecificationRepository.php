@@ -20,8 +20,8 @@ class SpecificationRepository extends EntityRepository
 
     /**
      * Get the query after matching with given specification
-     * @param SpecificationInterface $specification
-     * @param ModifierInterface $resultModifier
+     * @param  SpecificationInterface $specification
+     * @param  ModifierInterface      $resultModifier
      * @return Query
      * @throws LogicException
      */

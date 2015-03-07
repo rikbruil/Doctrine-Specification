@@ -11,10 +11,10 @@ class Like extends Comparison
     const STARTS_WITH = '%s%%';
 
     /**
-     * @param string $field
-     * @param string $value
-     * @param string $format
-     * @param string|null $dqlAlias
+     * @param  string                   $field
+     * @param  string                   $value
+     * @param  string                   $format
+     * @param  string|null              $dqlAlias
      * @throws InvalidArgumentException
      */
     public function __construct($field, $value, $format = self::CONTAINS, $dqlAlias = null)
@@ -23,10 +23,9 @@ class Like extends Comparison
         parent::__construct(self::LIKE, $field, $formattedValue, $dqlAlias);
     }
 
-
     /**
-     * @param string $format
-     * @param string $value
+     * @param  string $format
+     * @param  string $value
      * @return string
      */
     private function formatValue($format, $value)

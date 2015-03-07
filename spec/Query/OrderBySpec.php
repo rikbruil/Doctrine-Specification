@@ -6,7 +6,6 @@ use Doctrine\ORM\QueryBuilder;
 use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
 use Rb\Doctrine\Specification\Query\OrderBy;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class OrderBySpec extends ObjectBehavior
 {

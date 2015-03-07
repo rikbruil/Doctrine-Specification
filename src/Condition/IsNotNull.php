@@ -8,8 +8,8 @@ class IsNotNull extends IsNull
 {
     /**
      * Return a string expression which can be used as condition (in WHERE-clause)
-     * @param QueryBuilder $queryBuilder
-     * @param string $dqlAlias
+     * @param  QueryBuilder $queryBuilder
+     * @param  string       $dqlAlias
      * @return string
      */
     public function getCondition(QueryBuilder $queryBuilder, $dqlAlias)
@@ -19,6 +19,7 @@ class IsNotNull extends IsNull
         }
 
         $property = sprintf('%s.%s', $dqlAlias, $this->field);
+
         return (string) $queryBuilder->expr()->isNotNull($property);
     }
 }

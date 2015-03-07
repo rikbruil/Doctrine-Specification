@@ -12,7 +12,7 @@ interface ModifierInterface
 {
     /**
      * Modify the query (e.g. select more fields/relations)
-     * @param AbstractQuery $query
+     * @param  AbstractQuery $query
      * @return void
      */
     public function modify(AbstractQuery $query);

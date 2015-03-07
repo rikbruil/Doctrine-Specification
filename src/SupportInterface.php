@@ -6,7 +6,7 @@ interface SupportInterface
 {
     /**
      * Check to see if the current specification supports the given class
-     * @param string $className
+     * @param  string  $className
      * @return boolean
      */
     public function supports($className);

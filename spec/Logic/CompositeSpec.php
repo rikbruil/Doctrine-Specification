@@ -9,7 +9,6 @@ use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
 use Rb\Doctrine\Specification\SpecificationInterface;
 use Rb\Doctrine\Specification\Query;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class CompositeSpec extends ObjectBehavior
 {
@@ -94,8 +93,7 @@ class CompositeSpec extends ObjectBehavior
     public function it_should_throw_exception_when_child_does_not_support_class(
         SpecificationInterface $specificationA,
         SpecificationInterface $specificationB
-    )
-    {
+    ) {
         $className = 'foo';
         $this->beConstructedWith(self::EXPRESSION, [$specificationA, $specificationB]);
 

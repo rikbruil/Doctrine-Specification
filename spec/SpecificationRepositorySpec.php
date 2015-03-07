@@ -7,7 +7,6 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\QueryBuilder;
 use Rb\Doctrine\Specification\Exception\LogicException;
-use Rb\Doctrine\Specification\Logic\AndX;
 use Rb\Doctrine\Specification\Result\ModifierInterface;
 use Rb\Doctrine\Specification\SpecificationInterface;
 use PhpSpec\ObjectBehavior;
@@ -104,9 +103,9 @@ class SpecificationRepositorySpec extends ObjectBehavior
     /**
      * Prepare mocks
      * @param SpecificationInterface $specification
-     * @param EntityManager $entityManager
-     * @param QueryBuilder $queryBuilder
-     * @param AbstractQuery $query
+     * @param EntityManager          $entityManager
+     * @param QueryBuilder           $queryBuilder
+     * @param AbstractQuery          $query
      */
     private function prepare(
         SpecificationInterface $specification,
@@ -126,5 +125,4 @@ class SpecificationRepositorySpec extends ObjectBehavior
 
         $query->execute()->willReturn($this->result);
     }
-
 }

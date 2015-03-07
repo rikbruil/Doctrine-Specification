@@ -2,13 +2,11 @@
 
 namespace spec\Rb\Doctrine\Specification\Logic;
 
-use Doctrine\ORM\Query;
 use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
 use Rb\Doctrine\Specification\Condition\ModifierInterface;
 use Rb\Doctrine\Specification\SpecificationInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class NotSpec extends ObjectBehavior
 {

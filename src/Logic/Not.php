@@ -28,20 +28,21 @@ class Not implements SpecificationInterface
     }
 
     /**
-     * @param QueryBuilder $queryBuilder
-     * @param string $dqlAlias
+     * @param  QueryBuilder $queryBuilder
+     * @param  string       $dqlAlias
      * @return string
      */
     public function getCondition(QueryBuilder $queryBuilder, $dqlAlias)
     {
         $filter = $this->parent->getCondition($queryBuilder, $dqlAlias);
+
         return (string) $queryBuilder->expr()->not($filter);
     }
 
     /**
      * Method to modify the given QueryBuilder object
-     * @param QueryBuilder $queryBuilder
-     * @param string $dqlAlias
+     * @param  QueryBuilder $queryBuilder
+     * @param  string       $dqlAlias
      * @return void
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
@@ -55,7 +56,7 @@ class Not implements SpecificationInterface
 
     /**
      * Check to see if the current specification supports the given class
-     * @param string $className
+     * @param  string  $className
      * @return boolean
      */
     public function supports($className)

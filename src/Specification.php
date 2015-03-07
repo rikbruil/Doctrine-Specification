@@ -3,9 +3,7 @@
 namespace Rb\Doctrine\Specification;
 
 use Doctrine\ORM\QueryBuilder;
-use Rb\Doctrine\Specification\Condition;
 use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
-use Rb\Doctrine\Specification\Query;
 
 /**
  * Specification can be used as a quick-start to writing your own specifications.
@@ -20,7 +18,7 @@ class Specification implements SpecificationInterface
 
     /**
      * Set a specification to be used internally
-     * @param Query\ModifierInterface|Condition\ModifierInterface|SpecificationInterface $specification
+     * @param  Query\ModifierInterface|Condition\ModifierInterface|SpecificationInterface $specification
      * @throws InvalidArgumentException
      */
     public function setSpecification($specification)
@@ -42,7 +40,7 @@ class Specification implements SpecificationInterface
             return '';
         }
 
-        return (string)$this->specification
+        return (string) $this->specification
             ->getCondition($queryBuilder, $dqlAlias);
     }
 

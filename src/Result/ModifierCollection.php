@@ -22,7 +22,7 @@ class ModifierCollection extends ArrayCollection implements ModifierInterface
     }
 
     /**
-     * @param ModifierInterface $value
+     * @param  ModifierInterface        $value
      * @return bool
      * @throws InvalidArgumentException
      */
@@ -41,7 +41,7 @@ class ModifierCollection extends ArrayCollection implements ModifierInterface
 
     /**
      * Modify the query (e.g. select more fields/relations)
-     * @param AbstractQuery $query
+     * @param  AbstractQuery            $query
      * @throws InvalidArgumentException
      */
     public function modify(AbstractQuery $query)

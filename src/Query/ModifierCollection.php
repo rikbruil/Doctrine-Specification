@@ -21,7 +21,7 @@ class ModifierCollection extends ArrayCollection implements ModifierInterface
     }
 
     /**
-     * @param ModifierInterface $value
+     * @param  ModifierInterface        $value
      * @return bool
      * @throws InvalidArgumentException
      */
@@ -40,8 +40,8 @@ class ModifierCollection extends ArrayCollection implements ModifierInterface
 
     /**
      * Method to modify the given QueryBuilder object
-     * @param QueryBuilder $queryBuilder
-     * @param string $dqlAlias
+     * @param  QueryBuilder             $queryBuilder
+     * @param  string                   $dqlAlias
      * @throws InvalidArgumentException
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
