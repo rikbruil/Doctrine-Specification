@@ -1,10 +1,9 @@
-# Doctrine Specification [![Build Status](https://travis-ci.org/rikbruil/Doctrine-Specification.svg)](https://travis-ci.org/rikbruil/Doctrine-Specification)
-
+# Doctrine Specification 
+[![Build Status](https://travis-ci.org/rikbruil/Doctrine-Specification.svg)](https://travis-ci.org/rikbruil/Doctrine-Specification)
 [![Coverage Status](https://coveralls.io/repos/rikbruil/Doctrine-Specification/badge.svg?branch=master)](https://coveralls.io/r/rikbruil/Doctrine-Specification?branch=master)
-[![Latest Stable Version](https://poser.pugx.org/rikbruil/doctrine-specification/v/stable.svg)](https://packagist.org/packages/rikbruil/doctrine-specification) 
-[![Total Downloads](https://poser.pugx.org/rikbruil/doctrine-specification/downloads.svg)](https://packagist.org/packages/rikbruil/doctrine-specification) 
-[![Latest Unstable Version](https://poser.pugx.org/rikbruil/doctrine-specification/v/unstable.svg)](https://packagist.org/packages/rikbruil/doctrine-specification) 
+[![Latest Stable Version](https://poser.pugx.org/rikbruil/doctrine-specification/v/stable.svg)](https://packagist.org/packages/rikbruil/doctrine-specification)
 [![License](https://poser.pugx.org/rikbruil/doctrine-specification/license.svg)](https://packagist.org/packages/rikbruil/doctrine-specification)
+[![Dependency Status](https://www.versioneye.com/user/projects/54fb8bb74f31084fdc000705/badge.svg?style=flat)](https://www.versioneye.com/user/projects/54fb8bb74f31084fdc000705)
 
 Doctrine [Specification pattern][specification_pattern] for building queries dynamically and with re-usable classes for composition.
 
