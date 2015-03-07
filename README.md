@@ -137,6 +137,15 @@ class SomeService
 }
 ```
 
+## License
+
+Doctrine-Specification is licensed under the MIT License - see the `LICENSE` file for details
+
+## Acknowledgements
+
+This library is heavily inspired by Benjamin Eberlei's [blog post][blog_post]
+and [Happyr's Doctrine-Specification library][happyr_spec].
+
 [specification_pattern]: http://en.wikipedia.org/wiki/Specification_pattern
 [happyr_spec]: https://github.com/Happyr/Doctrine-Specification
 [blog_post]: http://www.whitewashing.de/2013/03/04/doctrine_repositories.html
