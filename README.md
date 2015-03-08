@@ -106,7 +106,7 @@ class AdsByUser extends Specification
 
     public function supports($className)
     {
-        return $className == Advertisement::class;
+        return $className == Advertisement::class && parent::supports($className);
     }
 }
 
