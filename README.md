@@ -84,9 +84,9 @@ class ExpiredAds extends SpecificationCollection
         parent::__construct($specs);
     }
     
-    public function supports($className)
+    public function isSatisfiedBy($value)
     {
-        return $className === Advertisement::class;
+        return $value === Advertisement::class;
     }
 }
 
@@ -105,9 +105,9 @@ class AdsByUser extends SpecificationCollection
         parent::__construct($specs);
     }
 
-    public function supports($className)
+    public function isSatisfiedBy($value)
     {
-        return $className == Advertisement::class && parent::supports($className);
+        return $value == Advertisement::class && parent::supports($className);
     }
 }
 
