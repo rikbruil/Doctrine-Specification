@@ -45,7 +45,7 @@ use Rb\Doctrine\Specification\Logic\AndX;
 use Rb\Doctrine\Specification\Logic\OrX;
 
 // Using the lib
-$spec = new AndX(
+$spec = new SpecificationCollection([
     new Equals('ended', 0),
     new OrX(
         new LowerThan('endDate', new \DateTime()),
@@ -54,7 +54,7 @@ $spec = new AndX(
             new LowerThan('startDate', new \DateTime('-4weeks'))
         )
     )
-);
+]);
 
 return $this->em->getRepository('Advertisement')->match($spec)->execute();
 ```
@@ -70,7 +70,7 @@ class ExpiredAds extends Specification
 {
     public function __construct()
     {
-        $spec = new AndX(
+        $spec = new SpecificationCollection([
                 new Equals('ended', 0),
                 new OrX(
                     new LowerThan('endDate', new \DateTime()),
@@ -79,7 +79,7 @@ class ExpiredAds extends Specification
                         new LowerThan('startDate', new \DateTime('-4weeks'))
                     )
                 )
-            );
+            ]);
         $this->setSpecification($spec);
     }
     
@@ -95,13 +95,13 @@ class AdsByUser extends Specification
 {
     public function __construct(User $user)
     {
-        $this->setSpecification(
-            new SpecificationCollection([
-                new Select('u'),
-                new Join('user', 'u'),
-                new Equals('id', $user->getId(), 'u'),
-            ])
-        );
+        $spec = new SpecificationCollection([
+            new Select('u'),
+            new Join('user', 'u'),
+            new Equals('id', $user->getId(), 'u'),
+        ])
+        
+        $this->setSpecification($spec);
     }
 
     public function supports($className)
