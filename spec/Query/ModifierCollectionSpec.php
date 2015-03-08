@@ -1,11 +1,11 @@
 <?php
 
-namespace spec\Rb\Doctrine\Specification\Query;
+namespace spec\Rb\Specification\Doctrine\Query;
 
 use Doctrine\ORM\QueryBuilder;
-use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
-use Rb\Doctrine\Specification\Query\ModifierInterface;
-use Rb\Doctrine\Specification\Result;
+use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
+use Rb\Specification\Doctrine\Query\ModifierInterface;
+use Rb\Specification\Doctrine\Result;
 use PhpSpec\ObjectBehavior;
 
 class ModifierCollectionSpec extends ObjectBehavior

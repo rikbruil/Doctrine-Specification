@@ -1,6 +1,6 @@
 <?php
 
-namespace Rb\Doctrine\Specification;
+namespace Rb\Specification\Doctrine;
 
 interface SupportInterface
 {

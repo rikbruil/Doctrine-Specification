@@ -11,10 +11,10 @@
   ],
   "minimum-stability": "stable",
   "autoload": {
-    "psr-4": {"Rb\\Doctrine\\Specification\\": "src/"}
+    "psr-4": {"Rb\\Specification\\Doctrine\\": "src/"}
   },
   "autoload-dev": {
-    "psr-4": {"spec\\Rb\\Doctrine\\Specification\\": "spec/"}
+    "psr-4": {"spec\\Rb\\Specification\\Doctrine\\": "spec/"}
   },
   "require": {
     "php": ">=5.5",

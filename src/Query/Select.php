@@ -1,12 +1,12 @@
 <?php
 
-namespace Rb\Doctrine\Specification\Query;
+namespace Rb\Specification\Doctrine\Query;
 
 use Doctrine\ORM\QueryBuilder;
 
 /**
  * Select will modify the query-builder so you can specify SELECT-statements
- * @package Rb\Doctrine\Specification\Query
+ * @package Rb\Specification\Doctrine\Query
  */
 class Select implements ModifierInterface
 {

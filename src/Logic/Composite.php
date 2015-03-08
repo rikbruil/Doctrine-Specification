@@ -1,17 +1,17 @@
 <?php
 
-namespace Rb\Doctrine\Specification\Logic;
+namespace Rb\Specification\Doctrine\Logic;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
-use Rb\Doctrine\Specification\Condition;
-use Rb\Doctrine\Specification\Query;
-use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
+use Rb\Specification\Doctrine\Condition;
+use Rb\Specification\Doctrine\Query;
+use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 
 /**
  * Class Composite
- * @package Rb\Doctrine\Specification\Logic
+ * @package Rb\Specification\Doctrine\Logic
  */
 class Composite extends ArrayCollection implements Condition\ModifierInterface
 {

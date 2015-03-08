@@ -1,13 +1,13 @@
 <?php
 
-namespace Rb\Doctrine\Specification\Result;
+namespace Rb\Specification\Doctrine\Result;
 
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\Query;
 
 /**
  * Hydrate results as array instead of objects
- * @package Rb\Doctrine\Specification\Result
+ * @package Rb\Specification\Doctrine\Result
  */
 class AsArray implements ModifierInterface
 {

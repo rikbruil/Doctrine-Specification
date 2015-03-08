@@ -1,12 +1,12 @@
 <?php
 
-namespace Rb\Doctrine\Specification\Logic;
+namespace Rb\Specification\Doctrine\Logic;
 
-use Rb\Doctrine\Specification\SpecificationInterface;
+use Rb\Specification\Doctrine\SpecificationInterface;
 
 /**
  * AndX specification lets you compose a new Specification with other specification classes
- * @package Rb\Doctrine\Specification\Logic
+ * @package Rb\Specification\Doctrine\Logic
  */
 class AndX extends Composite
 {

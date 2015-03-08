@@ -1,14 +1,14 @@
 <?php
 
-namespace spec\Rb\Doctrine\Specification;
+namespace spec\Rb\Specification\Doctrine;
 
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\QueryBuilder;
-use Rb\Doctrine\Specification\Exception\LogicException;
-use Rb\Doctrine\Specification\Result\ModifierInterface;
-use Rb\Doctrine\Specification\SpecificationInterface;
+use Rb\Specification\Doctrine\Exception\LogicException;
+use Rb\Specification\Doctrine\Result\ModifierInterface;
+use Rb\Specification\Doctrine\SpecificationInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

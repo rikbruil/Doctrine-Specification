@@ -1,10 +1,10 @@
 <?php
 
-namespace spec\Rb\Doctrine\Specification\Result;
+namespace spec\Rb\Specification\Doctrine\Result;
 
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\Query;
-use Rb\Doctrine\Specification\Result\ModifierInterface;
+use Rb\Specification\Doctrine\Result\ModifierInterface;
 use PhpSpec\ObjectBehavior;
 
 class AsArraySpec extends ObjectBehavior

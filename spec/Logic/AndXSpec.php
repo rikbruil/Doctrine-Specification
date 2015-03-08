@@ -1,11 +1,11 @@
 <?php
 
-namespace spec\Rb\Doctrine\Specification\Logic;
+namespace spec\Rb\Specification\Doctrine\Logic;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
-use Rb\Doctrine\Specification\Condition\ModifierInterface;
-use Rb\Doctrine\Specification\Logic\Composite;
+use Rb\Specification\Doctrine\Condition\ModifierInterface;
+use Rb\Specification\Doctrine\Logic\Composite;
 
 class AndXSpec extends ObjectBehavior
 {

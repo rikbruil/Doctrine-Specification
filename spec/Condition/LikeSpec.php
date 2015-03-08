@@ -1,11 +1,11 @@
 <?php
 
-namespace spec\Rb\Doctrine\Specification\Condition;
+namespace spec\Rb\Specification\Doctrine\Condition;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\QueryBuilder;
-use Rb\Doctrine\Specification\Condition\ModifierInterface;
-use Rb\Doctrine\Specification\Condition\Like;
+use Rb\Specification\Doctrine\Condition\ModifierInterface;
+use Rb\Specification\Doctrine\Condition\Like;
 use PhpSpec\ObjectBehavior;
 
 class LikeSpec extends ObjectBehavior

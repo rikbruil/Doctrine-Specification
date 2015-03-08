@@ -38,12 +38,12 @@ return $qb->where('r.ended = 0')
 ```
 
 ```php
-use Rb\Doctrine\Specification\Condition\Equals;
-use Rb\Doctrine\Specification\Condition\IsNull;
-use Rb\Doctrine\Specification\Condition\LowerThan;
-use Rb\Doctrine\Specification\Logic\AndX;
-use Rb\Doctrine\Specification\Logic\OrX;
-use Rb\Doctrine\Specification\SpecificationCollection;
+use Rb\Specification\Doctrine\Condition\Equals;
+use Rb\Specification\Doctrine\Condition\IsNull;
+use Rb\Specification\Doctrine\Condition\LowerThan;
+use Rb\Specification\Doctrine\Logic\AndX;
+use Rb\Specification\Doctrine\Logic\OrX;
+use Rb\Specification\Doctrine\SpecificationCollection;
 
 // Using the lib
 $spec = new SpecificationCollection([

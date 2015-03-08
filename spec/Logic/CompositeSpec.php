@@ -1,13 +1,13 @@
 <?php
 
-namespace spec\Rb\Doctrine\Specification\Logic;
+namespace spec\Rb\Specification\Doctrine\Logic;
 
 use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
-use Rb\Doctrine\Specification\Condition;
-use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
-use Rb\Doctrine\Specification\Logic\Composite;
-use Rb\Doctrine\Specification\SpecificationInterface;
+use Rb\Specification\Doctrine\Condition;
+use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
+use Rb\Specification\Doctrine\Logic\Composite;
+use Rb\Specification\Doctrine\SpecificationInterface;
 use PhpSpec\ObjectBehavior;
 
 class CompositeSpec extends ObjectBehavior

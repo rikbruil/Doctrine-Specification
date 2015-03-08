@@ -1,12 +1,12 @@
 <?php
 
-namespace Rb\Doctrine\Specification\Logic;
+namespace Rb\Specification\Doctrine\Logic;
 
-use Rb\Doctrine\Specification\SpecificationInterface;
+use Rb\Specification\Doctrine\SpecificationInterface;
 
 /**
  * Class OrX
- * @package Rb\Doctrine\Specification\Logic
+ * @package Rb\Specification\Doctrine\Logic
  */
 class OrX extends Composite
 {

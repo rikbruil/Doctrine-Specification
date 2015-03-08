@@ -1,11 +1,11 @@
 <?php
 
-namespace spec\Rb\Doctrine\Specification\Logic;
+namespace spec\Rb\Specification\Doctrine\Logic;
 
 use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
-use Rb\Doctrine\Specification\Condition\ModifierInterface;
-use Rb\Doctrine\Specification\SpecificationInterface;
+use Rb\Specification\Doctrine\Condition\ModifierInterface;
+use Rb\Specification\Doctrine\SpecificationInterface;
 use PhpSpec\ObjectBehavior;
 
 class NotSpec extends ObjectBehavior

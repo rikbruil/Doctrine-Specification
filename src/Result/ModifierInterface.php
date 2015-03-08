@@ -1,12 +1,12 @@
 <?php
 
-namespace Rb\Doctrine\Specification\Result;
+namespace Rb\Specification\Doctrine\Result;
 
 use Doctrine\ORM\AbstractQuery;
 
 /**
  * Interface ModifierInterface
- * @package Rb\Doctrine\Specification\Result
+ * @package Rb\Specification\Doctrine\Result
  */
 interface ModifierInterface
 {

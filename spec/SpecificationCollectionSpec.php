@@ -1,13 +1,13 @@
 <?php
 
-namespace spec\Rb\Doctrine\Specification;
+namespace spec\Rb\Specification\Doctrine;
 
 use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
-use Rb\Doctrine\Specification\Condition;
-use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
-use Rb\Doctrine\Specification\SpecificationInterface;
-use Rb\Doctrine\Specification\Query;
+use Rb\Specification\Doctrine\Condition;
+use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
+use Rb\Specification\Doctrine\SpecificationInterface;
+use Rb\Specification\Doctrine\Query;
 use PhpSpec\ObjectBehavior;
 
 class SpecificationCollectionSpec extends ObjectBehavior

@@ -1,13 +1,13 @@
 <?php
 
-namespace Rb\Doctrine\Specification\Query;
+namespace Rb\Specification\Doctrine\Query;
 
 use Doctrine\ORM\QueryBuilder;
-use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
+use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 
 /**
  * Class Join
- * @package Rb\Doctrine\Specification\Query
+ * @package Rb\Specification\Doctrine\Query
  */
 class Join implements ModifierInterface
 {

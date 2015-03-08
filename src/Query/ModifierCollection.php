@@ -1,14 +1,14 @@
 <?php
 
-namespace Rb\Doctrine\Specification\Query;
+namespace Rb\Specification\Doctrine\Query;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\QueryBuilder;
-use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
+use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 
 /**
  * Class ModifierCollection
- * @package Rb\Doctrine\Specification\Query
+ * @package Rb\Specification\Doctrine\Query
  */
 class ModifierCollection extends ArrayCollection implements ModifierInterface
 {

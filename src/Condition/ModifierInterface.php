@@ -1,12 +1,12 @@
 <?php
 
-namespace Rb\Doctrine\Specification\Condition;
+namespace Rb\Specification\Doctrine\Condition;
 
 use Doctrine\ORM\QueryBuilder;
 
 /**
  * Interface ModifierInterface
- * @package Rb\Doctrine\Specification\Condition
+ * @package Rb\Specification\Doctrine\Condition
  */
 interface ModifierInterface
 {

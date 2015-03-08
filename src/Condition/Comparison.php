@@ -1,10 +1,10 @@
 <?php
 
-namespace Rb\Doctrine\Specification\Condition;
+namespace Rb\Specification\Doctrine\Condition;
 
 use Doctrine\ORM\Query\Expr\Comparison as DoctrineComparison;
 use Doctrine\ORM\QueryBuilder;
-use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
+use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 
 class Comparison implements ModifierInterface
 {

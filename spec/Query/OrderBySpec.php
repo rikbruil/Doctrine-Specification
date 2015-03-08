@@ -1,10 +1,10 @@
 <?php
 
-namespace spec\Rb\Doctrine\Specification\Query;
+namespace spec\Rb\Specification\Doctrine\Query;
 
 use Doctrine\ORM\QueryBuilder;
-use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
-use Rb\Doctrine\Specification\Query\OrderBy;
+use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
+use Rb\Specification\Doctrine\Query\OrderBy;
 use PhpSpec\ObjectBehavior;
 
 class OrderBySpec extends ObjectBehavior

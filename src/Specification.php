@@ -1,13 +1,13 @@
 <?php
 
-namespace Rb\Doctrine\Specification;
+namespace Rb\Specification\Doctrine;
 
 use Doctrine\ORM\QueryBuilder;
-use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
+use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 
 /**
  * Specification can be used as a quick-start to writing your own specifications.
- * @package Rb\Doctrine\Specification
+ * @package Rb\Specification\Doctrine
  */
 class Specification implements SpecificationInterface
 {

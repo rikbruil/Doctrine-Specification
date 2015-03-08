@@ -1,6 +1,6 @@
 <?php
 
-namespace Rb\Doctrine\Specification\Query;
+namespace Rb\Specification\Doctrine\Query;
 
 use Doctrine\ORM\QueryBuilder;
 

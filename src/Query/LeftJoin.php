@@ -1,8 +1,8 @@
 <?php
 
-namespace Rb\Doctrine\Specification\Query;
+namespace Rb\Specification\Doctrine\Query;
 
-use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
+use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 
 class LeftJoin extends Join
 {

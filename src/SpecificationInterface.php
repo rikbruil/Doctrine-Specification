@@ -1,10 +1,10 @@
 <?php
 
-namespace Rb\Doctrine\Specification;
+namespace Rb\Specification\Doctrine;
 
 /**
  * SpecificationInterface can be used to implement custom specifications
- * @package Rb\Doctrine\Specification
+ * @package Rb\Specification\Doctrine
  */
 interface SpecificationInterface extends Condition\ModifierInterface, Query\ModifierInterface, SupportInterface
 {

@@ -1,15 +1,15 @@
 <?php
 
-namespace Rb\Doctrine\Specification;
+namespace Rb\Specification\Doctrine;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
-use Rb\Doctrine\Specification\Exception\LogicException;
-use Rb\Doctrine\Specification\Result\ModifierInterface;
+use Rb\Specification\Doctrine\Exception\LogicException;
+use Rb\Specification\Doctrine\Result\ModifierInterface;
 
 /**
  * Class SpecificationRepository
- * @package Rb\Doctrine\Specification
+ * @package Rb\Specification\Doctrine
  */
 class SpecificationRepository extends EntityRepository
 {

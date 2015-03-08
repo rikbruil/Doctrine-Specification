@@ -1,8 +1,8 @@
 <?php
 
-namespace Rb\Doctrine\Specification\Condition;
+namespace Rb\Specification\Doctrine\Condition;
 
-use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
+use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 
 class GreaterThanOrEquals extends Comparison
 {

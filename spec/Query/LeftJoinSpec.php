@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\Rb\Doctrine\Specification\Query;
+namespace spec\Rb\Specification\Doctrine\Query;
 
 use Doctrine\ORM\QueryBuilder;
-use Rb\Doctrine\Specification\Query\ModifierInterface;
+use Rb\Specification\Doctrine\Query\ModifierInterface;
 use PhpSpec\ObjectBehavior;
 
 class LeftJoinSpec extends ObjectBehavior
