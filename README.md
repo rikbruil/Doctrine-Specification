@@ -38,11 +38,11 @@ return $qb->where('r.ended = 0')
 ```
 
 ```php
-use Rb\Doctrine\Specification\Condition\AndX;
 use Rb\Doctrine\Specification\Condition\Equals;
 use Rb\Doctrine\Specification\Condition\IsNull;
 use Rb\Doctrine\Specification\Condition\LowerThan;
-use Rb\Doctrine\Specification\Condition\OrX;
+use Rb\Doctrine\Specification\Logic\AndX;
+use Rb\Doctrine\Specification\Logic\OrX;
 
 // Using the lib
 $spec = new AndX(
