@@ -96,11 +96,11 @@ class AdsByUser extends Specification
     public function __construct(User $user)
     {
         $this->setSpecification(
-            new AndX(
+            new SpecificationCollection([
                 new Select('u'),
                 new Join('user', 'u'),
-                new Equals('id', $user->getId(), 'u')
-            )
+                new Equals('id', $user->getId(), 'u'),
+            ])
         );
     }
 
@@ -117,10 +117,10 @@ class SomeService
      */
     public function myQuery(User $user)
     {
-        $spec = new AndX(
+        $spec = new SpecificationCollection([
             new ExpiredAds(),
-            new AdsByUser($user)
-        );
+            new AdsByUser($user),
+        ]);
 
         return $this->em->getRepository('Advertisement')->match($spec)->execute();
     }
@@ -131,10 +131,10 @@ class SomeService
      */
     public function myPaginatedQuery(User $user, $page = 1, $size = 10)
     {
-        $spec = new AndX(
+        $spec = new SpecificationCollection([
             new ExpiredAds(),
-            new AdsByUser($user)
-        );
+            new AdsByUser($user),
+        ]);
         
         $query = $this->em->getRepository('Advertisement')->match($spec);
         $query->setFirstResult(($page - 1) * $size))
