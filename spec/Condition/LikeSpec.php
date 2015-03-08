@@ -4,9 +4,9 @@ namespace spec\Rb\Specification\Doctrine\Condition;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\QueryBuilder;
-use Rb\Specification\Doctrine\Condition\ModifierInterface;
 use Rb\Specification\Doctrine\Condition\Like;
 use PhpSpec\ObjectBehavior;
+use Rb\Specification\Doctrine\SpecificationInterface;
 
 class LikeSpec extends ObjectBehavior
 {
@@ -21,7 +21,7 @@ class LikeSpec extends ObjectBehavior
 
     public function it_is_a_specification()
     {
-        $this->shouldHaveType(ModifierInterface::class);
+        $this->shouldHaveType(SpecificationInterface::class);
     }
 
     public function it_surrounds_with_wildcards_when_using_contains(
@@ -34,7 +34,7 @@ class LikeSpec extends ObjectBehavior
 
         $queryBuilder->setParameter('comparison_1', '%bar%')->shouldBeCalled();
 
-        $this->getCondition($queryBuilder, null);
+        $this->modify($queryBuilder, null);
     }
 
     public function it_starts_with_wildcard_when_using_ends_with(
@@ -47,7 +47,7 @@ class LikeSpec extends ObjectBehavior
 
         $queryBuilder->setParameter('comparison_1', '%bar')->shouldBeCalled();
 
-        $this->getCondition($queryBuilder, null);
+        $this->modify($queryBuilder, null);
     }
 
     public function it_ends_with_wildcard_when_using_starts_with(
@@ -60,6 +60,6 @@ class LikeSpec extends ObjectBehavior
 
         $queryBuilder->setParameter('comparison_1', 'bar%')->shouldBeCalled();
 
-        $this->getCondition($queryBuilder, null);
+        $this->modify($queryBuilder, null);
     }
 }

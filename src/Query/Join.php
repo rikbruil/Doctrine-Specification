@@ -4,12 +4,13 @@ namespace Rb\Specification\Doctrine\Query;
 
 use Doctrine\ORM\QueryBuilder;
 use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
+use Rb\Specification\Doctrine\SpecificationInterface;
 
 /**
  * Class Join
  * @package Rb\Specification\Doctrine\Query
  */
-class Join implements ModifierInterface
+class Join implements SpecificationInterface
 {
     const JOIN = 'join';
     const LEFT_JOIN = 'leftJoin';
@@ -71,10 +72,7 @@ class Join implements ModifierInterface
     }
 
     /**
-     * Method to modify the given QueryBuilder object
-     * @param  QueryBuilder $queryBuilder
-     * @param  string       $dqlAlias
-     * @return void
+     * {@inheritDoc}
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
@@ -88,5 +86,13 @@ class Join implements ModifierInterface
             [$queryBuilder, $this->type],
             [$statement, $this->newAlias]
         );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isSatisfiedBy($value)
+    {
+        return true;
     }
 }

@@ -4,10 +4,8 @@ namespace spec\Rb\Specification\Doctrine;
 
 use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
-use Rb\Specification\Doctrine\Condition;
 use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 use Rb\Specification\Doctrine\SpecificationInterface;
-use Rb\Specification\Doctrine\Query;
 use PhpSpec\ObjectBehavior;
 
 class SpecificationCollectionSpec extends ObjectBehavior
@@ -34,8 +32,8 @@ class SpecificationCollectionSpec extends ObjectBehavior
     public function it_supports_conditions(
         QueryBuilder $queryBuilder,
         Expr $expression,
-        Condition\ModifierInterface $conditionA,
-        Condition\ModifierInterface $conditionB,
+        SpecificationInterface $conditionA,
+        SpecificationInterface $conditionB,
         $x,
         $y
     ) {
@@ -44,32 +42,36 @@ class SpecificationCollectionSpec extends ObjectBehavior
         $this[] = $conditionA;
         $this[] = $conditionB;
 
-        $conditionA->getCondition($queryBuilder, $dqlAlias)->willReturn($x);
-        $conditionB->getCondition($queryBuilder, $dqlAlias)->willReturn($y);
+        $conditionA->isSatisfiedBy('foo')->willReturn(true);
+        $conditionB->isSatisfiedBy('foo')->willReturn(true);
+
+        $conditionA->modify($queryBuilder, $dqlAlias)->willReturn($x);
+        $conditionB->modify($queryBuilder, $dqlAlias)->willReturn($y);
         $queryBuilder->expr()->willReturn($expression);
 
         $expression->andX($x, $y)->shouldBeCalled();
 
-        $this->supports('foo')->shouldReturn(true);
-        $this->getCondition($queryBuilder, $dqlAlias);
+        $this->isSatisfiedBy('foo')->shouldReturn(true);
         $this->modify($queryBuilder, $dqlAlias);
     }
 
     public function it_supports_query_modifiers(
         QueryBuilder $queryBuilder,
-        Query\ModifierInterface $modifierA,
-        Query\ModifierInterface $modifierB
+        SpecificationInterface $modifierA,
+        SpecificationInterface $modifierB
     ) {
         $this->beConstructedWith([$modifierA, $modifierB]);
 
         $dqlAlias = 'a';
 
+        $modifierA->isSatisfiedBy('foo')->willReturn(true);
+        $modifierB->isSatisfiedBy('foo')->willReturn(true);
+
         $modifierA->modify($queryBuilder, $dqlAlias)->shouldBeCalled();
         $modifierB->modify($queryBuilder, $dqlAlias)->shouldBeCalled();
 
-        $this->supports('foo')->shouldReturn(true);
-        $this->getCondition($queryBuilder, $dqlAlias)->shouldReturn(null);
-        $this->modify($queryBuilder, $dqlAlias);
+        $this->isSatisfiedBy('foo')->shouldReturn(true);
+        $this->modify($queryBuilder, $dqlAlias)->shouldReturn(null);
     }
 
     public function it_should_throw_exception_when_child_does_not_support_class(
@@ -79,10 +81,10 @@ class SpecificationCollectionSpec extends ObjectBehavior
         $className = 'foo';
         $this->beConstructedWith([$specificationA, $specificationB]);
 
-        $specificationA->supports($className)->willReturn(true);
-        $specificationB->supports($className)->willReturn(false);
+        $specificationA->isSatisfiedBy($className)->willReturn(true);
+        $specificationB->isSatisfiedBy($className)->willReturn(false);
 
-        $this->supports($className)->shouldReturn(false);
+        $this->isSatisfiedBy($className)->shouldReturn(false);
     }
 
     public function it_should_throw_exception_on_invalid_child()

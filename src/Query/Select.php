@@ -3,12 +3,13 @@
 namespace Rb\Specification\Doctrine\Query;
 
 use Doctrine\ORM\QueryBuilder;
+use Rb\Specification\Doctrine\SpecificationInterface;
 
 /**
  * Select will modify the query-builder so you can specify SELECT-statements
  * @package Rb\Specification\Doctrine\Query
  */
-class Select implements ModifierInterface
+class Select implements SpecificationInterface
 {
     /**
      * @var string
@@ -24,13 +25,18 @@ class Select implements ModifierInterface
     }
 
     /**
-     * Method to modify the given QueryBuilder object
-     * @param  QueryBuilder $queryBuilder
-     * @param  string       $dqlAlias
-     * @return void
+     * {@inheritDoc}
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
         $queryBuilder->addSelect($this->select);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isSatisfiedBy($value)
+    {
+        return true;
     }
 }

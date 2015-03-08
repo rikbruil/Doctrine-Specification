@@ -27,16 +27,17 @@ class SpecificationRepository extends EntityRepository
      */
     public function match(SpecificationInterface $specification, ModifierInterface $resultModifier = null)
     {
-        if (! $specification->supports($this->getEntityName())) {
-            throw new LogicException('Specification not supported by this repository!');
+        if (! $specification->isSatisfiedBy($this->getEntityName())) {
+            throw new LogicException(sprintf(
+                'Specification "%s" not supported by this repository!',
+                get_class($specification)
+            ));
         }
 
         $dqlAlias = $this->dqlAlias;
         $queryBuilder = $this->createQueryBuilder($dqlAlias);
+        $condition = $specification->modify($queryBuilder, $dqlAlias);
 
-        $specification->modify($queryBuilder, $dqlAlias);
-
-        $condition = $specification->getCondition($queryBuilder, $dqlAlias);
         if (! empty($condition)) {
             $queryBuilder->where($condition);
         }

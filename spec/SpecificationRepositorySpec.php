@@ -32,7 +32,7 @@ class SpecificationRepositorySpec extends ObjectBehavior
         AbstractQuery $query
     ) {
         $this->prepare($specification, $entityManager, $queryBuilder, $query);
-        $specification->supports(Argument::any())
+        $specification->isSatisfiedBy(Argument::any())
             ->willReturn(true);
 
         $specification->modify($queryBuilder, $this->dqlAlias)
@@ -52,7 +52,7 @@ class SpecificationRepositorySpec extends ObjectBehavior
         ModifierInterface $modifier
     ) {
         $this->prepare($specification, $entityManager, $queryBuilder, $query);
-        $specification->supports(Argument::any())
+        $specification->isSatisfiedBy(Argument::any())
             ->willReturn(true);
 
         $specification->modify($queryBuilder, $this->dqlAlias)
@@ -73,7 +73,7 @@ class SpecificationRepositorySpec extends ObjectBehavior
         AbstractQuery $query
     ) {
         $this->prepare($specification, $entityManager, $queryBuilder, $query);
-        $specification->supports(Argument::any())
+        $specification->isSatisfiedBy(Argument::any())
             ->willReturn(false);
 
         $this->shouldThrow(LogicException::class)
@@ -94,8 +94,8 @@ class SpecificationRepositorySpec extends ObjectBehavior
         $queryBuilder->getQuery()->willReturn($query);
 
         $specification->modify($queryBuilder, $this->dqlAlias)->shouldBeCalled();
-        $specification->supports(Argument::any())->willReturn(true);
-        $specification->getCondition($queryBuilder, $this->dqlAlias)->willReturn('');
+        $specification->isSatisfiedBy(Argument::any())->willReturn(true);
+        $specification->modify($queryBuilder, $this->dqlAlias)->willReturn('');
 
         $this->match($specification);
     }
@@ -115,7 +115,7 @@ class SpecificationRepositorySpec extends ObjectBehavior
     ) {
         $entityManager->createQueryBuilder()->willReturn($queryBuilder);
 
-        $specification->getCondition($queryBuilder, $this->dqlAlias)->willReturn($this->expression);
+        $specification->modify($queryBuilder, $this->dqlAlias)->willReturn($this->expression);
 
         $queryBuilder->select($this->dqlAlias)->willreturn($queryBuilder);
         $queryBuilder->from(Argument::any(), $this->dqlAlias)->willReturn($queryBuilder);

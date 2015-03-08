@@ -4,12 +4,13 @@ namespace Rb\Specification\Doctrine\Query;
 
 use Doctrine\ORM\QueryBuilder;
 use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
+use Rb\Specification\Doctrine\SpecificationInterface;
 
 /**
  * Class OrderBy
  * @package Rb\Specification\Doctrine\Query
  */
-class OrderBy implements ModifierInterface
+class OrderBy implements SpecificationInterface
 {
     const ASC = 'ASC';
     const DESC = 'DESC';
@@ -49,10 +50,7 @@ class OrderBy implements ModifierInterface
     }
 
     /**
-     * Method to modify the given QueryBuilder object
-     * @param  QueryBuilder $queryBuilder
-     * @param  string       $dqlAlias
-     * @return void
+     * {@inheritDoc}
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
@@ -62,5 +60,13 @@ class OrderBy implements ModifierInterface
 
         $orderBy = sprintf('%s.%s', $dqlAlias, $this->field);
         $queryBuilder->addOrderBy($orderBy, $this->order);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isSatisfiedBy($value)
+    {
+        return true;
     }
 }

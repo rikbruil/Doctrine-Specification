@@ -3,8 +3,9 @@
 namespace Rb\Specification\Doctrine\Condition;
 
 use Doctrine\ORM\QueryBuilder;
+use Rb\Specification\Doctrine\SpecificationInterface;
 
-class In implements ModifierInterface
+class In implements SpecificationInterface
 {
     /**
      * @var string
@@ -34,12 +35,9 @@ class In implements ModifierInterface
     }
 
     /**
-     * Return a string expression which can be used as condition (in WHERE-clause)
-     * @param  QueryBuilder $queryBuilder
-     * @param  string       $dqlAlias
-     * @return string
+     * {@inheritDoc}
      */
-    public function getCondition(QueryBuilder $queryBuilder, $dqlAlias)
+    public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
         if ($this->dqlAlias) {
             $dqlAlias = $this->dqlAlias;
@@ -61,5 +59,13 @@ class In implements ModifierInterface
     public function generateParameterName(QueryBuilder $queryBuilder)
     {
         return sprintf('in_%d', count($queryBuilder->getParameters()));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isSatisfiedBy($value)
+    {
+        return true;
     }
 }

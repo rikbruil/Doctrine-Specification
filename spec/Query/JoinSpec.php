@@ -5,8 +5,8 @@ namespace spec\Rb\Specification\Doctrine\Query;
 use Doctrine\ORM\QueryBuilder;
 use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 use Rb\Specification\Doctrine\Query\Join;
-use Rb\Specification\Doctrine\Query\ModifierInterface;
 use PhpSpec\ObjectBehavior;
+use Rb\Specification\Doctrine\SpecificationInterface;
 
 class JoinSpec extends ObjectBehavior
 {
@@ -17,7 +17,12 @@ class JoinSpec extends ObjectBehavior
 
     public function it_is_a_specification()
     {
-        $this->shouldHaveType(ModifierInterface::class);
+        $this->shouldHaveType(SpecificationInterface::class);
+    }
+
+    public function it_should_support_anything()
+    {
+        $this->isSatisfiedBy('foo')->shouldReturn(true);
     }
 
     public function it_joins_with_default_dql_alias(QueryBuilder $queryBuilder)

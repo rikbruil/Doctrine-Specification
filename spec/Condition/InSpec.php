@@ -5,8 +5,8 @@ namespace spec\Rb\Specification\Doctrine\Condition;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
-use Rb\Specification\Doctrine\Condition\ModifierInterface;
 use PhpSpec\ObjectBehavior;
+use Rb\Specification\Doctrine\SpecificationInterface;
 
 class InSpec extends ObjectBehavior
 {
@@ -21,7 +21,7 @@ class InSpec extends ObjectBehavior
 
     public function it_is_an_expression()
     {
-        $this->shouldBeAnInstanceOf(ModifierInterface::class);
+        $this->shouldBeAnInstanceOf(SpecificationInterface::class);
     }
 
     public function it_returns_an_expression_func_object(QueryBuilder $queryBuilder, ArrayCollection $parameters, Expr $expr)
@@ -36,7 +36,8 @@ class InSpec extends ObjectBehavior
         $parameters->count()->willReturn(10);
 
         $queryBuilder->setParameter('in_10', $this->value)->shouldBeCalled();
-        $this->getCondition($queryBuilder, $dqlAlias)->shouldReturn($expression);
+        $this->isSatisfiedBy('foo')->shouldReturn(true);
+        $this->modify($queryBuilder, $dqlAlias)->shouldReturn($expression);
     }
 
     public function it_should_use_dql_alias_if_set(QueryBuilder $queryBuilder, ArrayCollection $parameters, Expr $expr)
@@ -53,6 +54,7 @@ class InSpec extends ObjectBehavior
         $parameters->count()->willReturn(10);
 
         $queryBuilder->setParameter('in_10', $this->value)->shouldBeCalled();
-        $this->getCondition($queryBuilder, $dqlAlias)->shouldReturn($expression);
+        $this->isSatisfiedBy('foo')->shouldReturn(true);
+        $this->modify($queryBuilder, $dqlAlias)->shouldReturn($expression);
     }
 }

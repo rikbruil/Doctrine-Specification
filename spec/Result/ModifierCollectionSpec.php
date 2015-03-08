@@ -23,9 +23,9 @@ class ModifierCollectionSpec extends ObjectBehavior
         $this->modify($query);
     }
 
-    public function it_should_throw_exception_when_adding_incorrect_children(Query\ModifierInterface $queryModifier)
+    public function it_should_throw_exception_when_adding_incorrect_children()
     {
         $this->shouldThrow(InvalidArgumentException::class)
-            ->during('add', [$queryModifier]);
+            ->during('add', ['test']);
     }
 }

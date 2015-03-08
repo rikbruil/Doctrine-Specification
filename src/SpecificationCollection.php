@@ -18,34 +18,17 @@ class SpecificationCollection extends ArrayCollection implements SpecificationIn
     }
 
     /**
-     * Method to modify the given QueryBuilder object
-     * @param  QueryBuilder $queryBuilder
-     * @param  string       $dqlAlias
-     * @return void
-     */
-    public function modify(QueryBuilder $queryBuilder, $dqlAlias)
-    {
-        foreach ($this as $child) {
-            if (! $child instanceof Query\ModifierInterface) {
-                continue;
-            }
-
-            $child->modify($queryBuilder, $dqlAlias);
-        }
-    }
-
-    /**
      * @param  Condition\ModifierInterface|Query\ModifierInterface $value
      * @return bool
      * @throws InvalidArgumentException
      */
     public function add($value)
     {
-        if (! $value instanceof Condition\ModifierInterface &&
-            ! $value instanceof Query\ModifierInterface) {
+        if (! $value instanceof SpecificationInterface) {
             throw new InvalidArgumentException(sprintf(
-                '"%s" does not implement any ModifierInterface!',
-                (is_object($value)) ? get_class($value) : $value
+                '"%s" does not implement "%s"!',
+                (is_object($value)) ? get_class($value) : $value,
+                SpecificationInterface::class
             ));
         }
 
@@ -53,19 +36,12 @@ class SpecificationCollection extends ArrayCollection implements SpecificationIn
     }
 
     /**
-     * Return a string expression which can be used as condition (in WHERE-clause)
-     * @param  QueryBuilder $queryBuilder
-     * @param  string       $dqlAlias
-     * @return string
+     * {@inheritDoc}
      */
-    public function getCondition(QueryBuilder $queryBuilder, $dqlAlias)
+    public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
-        $match = function ($specification) use ($queryBuilder, $dqlAlias) {
-            if ($specification instanceof Condition\ModifierInterface) {
-                return $specification->getCondition($queryBuilder, $dqlAlias);
-            }
-
-            return null;
+        $match = function (SpecificationInterface $specification) use ($queryBuilder, $dqlAlias) {
+            return $specification->modify($queryBuilder, $dqlAlias);
         };
 
         $result = array_filter(array_map($match, $this->toArray()));
@@ -80,18 +56,13 @@ class SpecificationCollection extends ArrayCollection implements SpecificationIn
     }
 
     /**
-     * Check to see if the current specification supports the given class
-     * @param  string  $className
-     * @return boolean
+     * {@inheritDoc}
      */
-    public function supports($className)
+    public function isSatisfiedBy($value)
     {
+        /** @var SpecificationInterface $child */
         foreach ($this as $child) {
-            if (! $child instanceof SupportInterface) {
-                continue;
-            }
-
-            if (! $child->supports($className)) {
+            if (! $child->isSatisfiedBy($value)) {
                 return false;
             }
         }

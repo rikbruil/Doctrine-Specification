@@ -30,6 +30,7 @@ class OrderBySpec extends ObjectBehavior
 
         $queryBuilder->addOrderBy($sort, $this->order)->shouldBeCalled();
 
+        $this->isSatisfiedBy('foo')->shouldReturn(true);
         $this->modify($queryBuilder, $this->alias);
     }
 }

@@ -5,8 +5,9 @@ namespace Rb\Specification\Doctrine\Condition;
 use Doctrine\ORM\Query\Expr\Comparison as DoctrineComparison;
 use Doctrine\ORM\QueryBuilder;
 use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
+use Rb\Specification\Doctrine\SpecificationInterface;
 
-class Comparison implements ModifierInterface
+class Comparison implements SpecificationInterface
 {
     const EQ = '=';
     const NEQ = '<>';
@@ -75,7 +76,7 @@ class Comparison implements ModifierInterface
      *
      * @return string
      */
-    public function getCondition(QueryBuilder $queryBuilder, $dqlAlias)
+    public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
         if ($this->dqlAlias) {
             $dqlAlias = $this->dqlAlias;
@@ -101,5 +102,13 @@ class Comparison implements ModifierInterface
     protected function generateName(QueryBuilder $queryBuilder)
     {
         return sprintf('comparison_%d', count($queryBuilder->getParameters()));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isSatisfiedBy($value)
+    {
+        return true;
     }
 }

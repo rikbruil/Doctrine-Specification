@@ -15,6 +15,7 @@ class SelectSpec extends ObjectBehavior
 
         $queryBuilder->addSelect($entity)->shouldBeCalled();
 
+        $this->isSatisfiedBy('foo')->shouldReturn(true);
         $this->modify($queryBuilder, $alias);
     }
 }

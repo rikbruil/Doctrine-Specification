@@ -31,7 +31,7 @@ class ModifierCollection extends ArrayCollection implements ModifierInterface
         if (! $value instanceof ModifierInterface) {
             throw new InvalidArgumentException(sprintf(
                 '"%s" does not implement "%s"!',
-                get_class($value),
+                (is_object($value)) ? get_class($value) : $value,
                 ModifierInterface::class
             ));
         }

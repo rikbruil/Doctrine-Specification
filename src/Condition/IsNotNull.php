@@ -7,12 +7,9 @@ use Doctrine\ORM\QueryBuilder;
 class IsNotNull extends IsNull
 {
     /**
-     * Return a string expression which can be used as condition (in WHERE-clause)
-     * @param  QueryBuilder $queryBuilder
-     * @param  string       $dqlAlias
-     * @return string
+     * {@inheritDoc}
      */
-    public function getCondition(QueryBuilder $queryBuilder, $dqlAlias)
+    public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
         if ($this->dqlAlias) {
             $dqlAlias = $this->dqlAlias;

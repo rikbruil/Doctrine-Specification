@@ -5,7 +5,6 @@ namespace spec\Rb\Specification\Doctrine;
 use Doctrine\ORM\QueryBuilder;
 use Rb\Specification\Doctrine\Condition;
 use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
-use Rb\Specification\Doctrine\Query;
 use Rb\Specification\Doctrine\Result;
 use Rb\Specification\Doctrine\SpecificationInterface;
 use PhpSpec\ObjectBehavior;
@@ -20,39 +19,37 @@ class SpecificationSpec extends ObjectBehavior
         QueryBuilder $queryBuilder,
         SpecificationInterface $specification
     ) {
-        $specification->supports($this->className)->willReturn(true);
-        $specification->getCondition($queryBuilder, $this->alias)->willReturn($this->condition);
-        $specification->modify($queryBuilder, $this->alias)->shouldBeCalled();
+        $specification->isSatisfiedBy($this->className)->willReturn(true);
+        $specification->modify($queryBuilder, $this->alias)->willReturn($this->condition);
 
         $this->setSpecification($specification);
 
-        $this->supports($this->className)->shouldReturn(true);
-        $this->getCondition($queryBuilder, $this->alias)->shouldReturn($this->condition);
-        $this->modify($queryBuilder, $this->alias);
+        $this->isSatisfiedBy($this->className)->shouldReturn(true);
+        $this->modify($queryBuilder, $this->alias)->shouldReturn($this->condition);
     }
 
-    public function it_should_accept_query_modifiers(QueryBuilder $queryBuilder, Query\ModifierInterface $modifier)
+    public function it_should_accept_query_modifiers(QueryBuilder $queryBuilder, SpecificationInterface $modifier)
     {
+        $modifier->isSatisfiedBy($this->className)->willReturn(true);
         $modifier->modify($queryBuilder, $this->alias)->shouldBeCalled();
 
         $this->setSpecification($modifier);
 
-        $this->supports($this->className)->shouldReturn(true);
-        $this->getCondition($queryBuilder, $this->alias)->shouldReturn('');
-        $this->modify($queryBuilder, $this->alias);
+        $this->isSatisfiedBy($this->className)->shouldReturn(true);
+        $this->modify($queryBuilder, $this->alias)->shouldReturn('');
     }
 
     public function it_should_accept_condition_modifiers(
         QueryBuilder $queryBuilder,
-        Condition\ModifierInterface $modifier
+        SpecificationInterface $modifier
     ) {
-        $modifier->getCondition($queryBuilder, $this->alias)->willReturn($this->condition);
+        $modifier->isSatisfiedBy($this->className)->willReturn(true);
+        $modifier->modify($queryBuilder, $this->alias)->willReturn($this->condition);
 
         $this->setSpecification($modifier);
 
-        $this->supports($this->className)->shouldReturn(true);
-        $this->getCondition($queryBuilder, $this->alias)->shouldReturn($this->condition);
-        $this->modify($queryBuilder, $this->alias);
+        $this->isSatisfiedBy($this->className)->shouldReturn(true);
+        $this->modify($queryBuilder, $this->alias)->shouldReturn($this->condition);
     }
 
     public function it_should_throw_an_exception_when_setting_incorrect_specification(

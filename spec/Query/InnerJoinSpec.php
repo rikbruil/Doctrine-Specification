@@ -3,8 +3,8 @@
 namespace spec\Rb\Specification\Doctrine\Query;
 
 use Doctrine\ORM\QueryBuilder;
-use Rb\Specification\Doctrine\Query\ModifierInterface;
 use PhpSpec\ObjectBehavior;
+use Rb\Specification\Doctrine\SpecificationInterface;
 
 class InnerJoinSpec extends ObjectBehavior
 {
@@ -15,7 +15,7 @@ class InnerJoinSpec extends ObjectBehavior
 
     public function it_is_a_specification()
     {
-        $this->shouldHaveType(ModifierInterface::class);
+        $this->shouldHaveType(SpecificationInterface::class);
     }
 
     public function it_joins_with_default_dql_alias(QueryBuilder $queryBuilder)

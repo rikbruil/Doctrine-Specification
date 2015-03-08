@@ -3,10 +3,7 @@
 namespace Rb\Specification\Doctrine\Logic;
 
 use Doctrine\ORM\QueryBuilder;
-use Rb\Specification\Doctrine\Condition;
-use Rb\Specification\Doctrine\Query;
 use Rb\Specification\Doctrine\SpecificationInterface;
-use Rb\Specification\Doctrine\SupportInterface;
 
 /**
  * Class Not negates whatever specification/filter is passed inside it
@@ -15,14 +12,14 @@ use Rb\Specification\Doctrine\SupportInterface;
 class Not implements SpecificationInterface
 {
     /**
-     * @var Condition\ModifierInterface
+     * @var SpecificationInterface
      */
     private $parent;
 
     /**
-     * @param Condition\ModifierInterface $expr
+     * @param SpecificationInterface $expr
      */
-    public function __construct(Condition\ModifierInterface $expr)
+    public function __construct(SpecificationInterface $expr)
     {
         $this->parent = $expr;
     }
@@ -32,39 +29,21 @@ class Not implements SpecificationInterface
      * @param  string       $dqlAlias
      * @return string
      */
-    public function getCondition(QueryBuilder $queryBuilder, $dqlAlias)
+    public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
-        $filter = $this->parent->getCondition($queryBuilder, $dqlAlias);
+        $filter = $this->parent->modify($queryBuilder, $dqlAlias);
+        if (empty($filter)) {
+            return '';
+        }
 
         return (string) $queryBuilder->expr()->not($filter);
     }
 
     /**
-     * Method to modify the given QueryBuilder object
-     * @param  QueryBuilder $queryBuilder
-     * @param  string       $dqlAlias
-     * @return void
+     * {@inheritDoc}
      */
-    public function modify(QueryBuilder $queryBuilder, $dqlAlias)
+    public function isSatisfiedBy($value)
     {
-        if (! $this->parent instanceof Query\ModifierInterface) {
-            return;
-        }
-
-        $this->parent->modify($queryBuilder, $dqlAlias);
-    }
-
-    /**
-     * Check to see if the current specification supports the given class
-     * @param  string  $className
-     * @return boolean
-     */
-    public function supports($className)
-    {
-        if ($this->parent instanceof SupportInterface) {
-            return $this->parent->supports($className);
-        }
-
-        return true;
+        return $this->parent->isSatisfiedBy($value);
     }
 }

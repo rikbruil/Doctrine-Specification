@@ -3,8 +3,9 @@
 namespace Rb\Specification\Doctrine\Condition;
 
 use Doctrine\ORM\QueryBuilder;
+use Rb\Specification\Doctrine\SpecificationInterface;
 
-class IsNull implements ModifierInterface
+class IsNull implements SpecificationInterface
 {
     /**
      * @var string
@@ -27,12 +28,9 @@ class IsNull implements ModifierInterface
     }
 
     /**
-     * Return a string expression which can be used as condition (in WHERE-clause)
-     * @param  QueryBuilder $queryBuilder
-     * @param  string       $dqlAlias
-     * @return string
+     * {@inheritDoc}
      */
-    public function getCondition(QueryBuilder $queryBuilder, $dqlAlias)
+    public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
         if ($this->dqlAlias) {
             $dqlAlias = $this->dqlAlias;
@@ -41,5 +39,13 @@ class IsNull implements ModifierInterface
         $property = sprintf('%s.%s', $dqlAlias, $this->field);
 
         return (string) $queryBuilder->expr()->isNull($property);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isSatisfiedBy($value)
+    {
+        return true;
     }
 }
