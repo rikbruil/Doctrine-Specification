@@ -43,6 +43,7 @@ use Rb\Doctrine\Specification\Condition\IsNull;
 use Rb\Doctrine\Specification\Condition\LowerThan;
 use Rb\Doctrine\Specification\Logic\AndX;
 use Rb\Doctrine\Specification\Logic\OrX;
+use Rb\Doctrine\Specification\SpecificationCollection;
 
 // Using the lib
 $spec = new SpecificationCollection([
