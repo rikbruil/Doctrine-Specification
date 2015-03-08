@@ -67,21 +67,21 @@ A bonus of this pattern is composition, which makes specifications very reusable
 
 use Entity\Advertisement;
 
-class ExpiredAds extends Specification
+class ExpiredAds extends SpecificationCollection
 {
     public function __construct()
     {
-        $spec = new SpecificationCollection([
-                new Equals('ended', 0),
-                new OrX(
-                    new LowerThan('endDate', new \DateTime()),
-                    new AndX(
-                        new IsNull('endDate'),
-                        new LowerThan('startDate', new \DateTime('-4weeks'))
-                    )
+        $specs = [
+            new Equals('ended', 0),
+            new OrX(
+                new LowerThan('endDate', new \DateTime()),
+                new AndX(
+                    new IsNull('endDate'),
+                    new LowerThan('startDate', new \DateTime('-4weeks'))
                 )
-            ]);
-        $this->setSpecification($spec);
+            )
+        ];
+        parent::__construct($specs);
     }
     
     public function supports($className)
@@ -92,17 +92,17 @@ class ExpiredAds extends Specification
 
 use Entity\User;
 
-class AdsByUser extends Specification
+class AdsByUser extends SpecificationCollection
 {
     public function __construct(User $user)
     {
-        $spec = new SpecificationCollection([
+        $specs = [
             new Select('u'),
             new Join('user', 'u'),
             new Equals('id', $user->getId(), 'u'),
-        ])
+        ];
         
-        $this->setSpecification($spec);
+        parent::__construct($specs);
     }
 
     public function supports($className)
