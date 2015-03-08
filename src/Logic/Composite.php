@@ -8,14 +8,12 @@ use Doctrine\ORM\QueryBuilder;
 use Rb\Doctrine\Specification\Condition;
 use Rb\Doctrine\Specification\Query;
 use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
-use Rb\Doctrine\Specification\SpecificationInterface;
-use Rb\Doctrine\Specification\SupportInterface;
 
 /**
  * Class Composite
  * @package Rb\Doctrine\Specification\Logic
  */
-class Composite extends ArrayCollection implements SpecificationInterface
+class Composite extends ArrayCollection implements Condition\ModifierInterface
 {
     const AND_X = 'andX';
     const OR_X = 'orX';
@@ -31,8 +29,8 @@ class Composite extends ArrayCollection implements SpecificationInterface
     private $type;
 
     /**
-     * @param string                                                $type
-     * @param Query\ModifierInterface[]|Condition\ModifierInterface $children
+     * @param string                        $type
+     * @param Condition\ModifierInterface[] $children
      */
     public function __construct($type, array $children = [])
     {
@@ -65,12 +63,11 @@ class Composite extends ArrayCollection implements SpecificationInterface
      */
     public function add($value)
     {
-        if (! $value instanceof Query\ModifierInterface &&
-            ! $value instanceof Condition\ModifierInterface
-        ) {
+        if (! $value instanceof Condition\ModifierInterface) {
             throw new InvalidArgumentException(sprintf(
-                '"%s" does not implement any ModifierInterface!',
-                (is_object($value)) ? get_class($value) : $value
+                '"%s" does not implement "%s"!',
+                (is_object($value)) ? get_class($value) : $value,
+                Condition\ModifierInterface::class
             ));
         }
 
@@ -78,7 +75,7 @@ class Composite extends ArrayCollection implements SpecificationInterface
     }
 
     /**
-     * @param  Query\ModifierInterface[]|Condition\ModifierInterface[] $children
+     * @param  Condition\ModifierInterface[] $children
      * @return $this
      */
     protected function setChildren(array $children)
@@ -97,12 +94,12 @@ class Composite extends ArrayCollection implements SpecificationInterface
      */
     public function getCondition(QueryBuilder $queryBuilder, $dqlAlias)
     {
-        $match = function ($specification) use ($queryBuilder, $dqlAlias) {
-            if ($specification instanceof Condition\ModifierInterface) {
-                return $specification->getCondition($queryBuilder, $dqlAlias);
-            }
-
-            return null;
+        /**
+         * @param Condition\ModifierInterface $modifier
+         * @return string|null
+         */
+        $match = function ($modifier) use ($queryBuilder, $dqlAlias) {
+            return $modifier->getCondition($queryBuilder, $dqlAlias);
         };
 
         $result = array_filter(array_map($match, $this->toArray()));
@@ -114,40 +111,5 @@ class Composite extends ArrayCollection implements SpecificationInterface
             [$queryBuilder->expr(), $this->type],
             $result
         );
-    }
-
-    /**
-     * @param QueryBuilder $queryBuilder
-     * @param string       $dqlAlias
-     */
-    public function modify(QueryBuilder $queryBuilder, $dqlAlias)
-    {
-        foreach ($this as $child) {
-            if (!$child instanceof Query\ModifierInterface) {
-                continue;
-            }
-
-            $child->modify($queryBuilder, $dqlAlias);
-        }
-    }
-
-    /**
-     * Check to see if the current specification supports the given class
-     * @param  string  $className
-     * @return boolean
-     */
-    public function supports($className)
-    {
-        foreach ($this as $child) {
-            if (!$child instanceof SupportInterface) {
-                continue;
-            }
-
-            if (!$child->supports($className)) {
-                return false;
-            }
-        }
-
-        return true;
     }
 }

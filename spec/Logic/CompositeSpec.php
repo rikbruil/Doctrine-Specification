@@ -6,8 +6,8 @@ use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
 use Rb\Doctrine\Specification\Condition;
 use Rb\Doctrine\Specification\Exception\InvalidArgumentException;
+use Rb\Doctrine\Specification\Logic\Composite;
 use Rb\Doctrine\Specification\SpecificationInterface;
-use Rb\Doctrine\Specification\Query;
 use PhpSpec\ObjectBehavior;
 
 class CompositeSpec extends ObjectBehavior
@@ -21,20 +21,7 @@ class CompositeSpec extends ObjectBehavior
 
     public function it_is_a_specification()
     {
-        $this->shouldHaveType(SpecificationInterface::class);
-    }
-
-    public function it_modifies_all_child_queries(
-        QueryBuilder $queryBuilder,
-        SpecificationInterface $specificationA,
-        SpecificationInterface $specificationB
-    ) {
-        $dqlAlias = 'a';
-
-        $specificationA->modify($queryBuilder, $dqlAlias)->shouldBeCalled();
-        $specificationB->modify($queryBuilder, $dqlAlias)->shouldBeCalled();
-
-        $this->modify($queryBuilder, $dqlAlias);
+        $this->shouldHaveType(Composite::class);
     }
 
     public function it_supports_conditions(
@@ -56,26 +43,24 @@ class CompositeSpec extends ObjectBehavior
 
         $expression->{self::EXPRESSION}($x, $y)->shouldBeCalled();
 
-        $this->supports('foo')->shouldReturn(true);
         $this->getCondition($queryBuilder, $dqlAlias);
-        $this->modify($queryBuilder, $dqlAlias);
     }
 
-    public function it_supports_query_modifiers(
+    public function it_should_return_null_for_specifications_without_conditions(
         QueryBuilder $queryBuilder,
-        Query\ModifierInterface $modifierA,
-        Query\ModifierInterface $modifierB
+        Expr $expression,
+        SpecificationInterface $specificationA,
+        Condition\ModifierInterface $specificationB
     ) {
-        $this->beConstructedWith(self::EXPRESSION, [$modifierA, $modifierB]);
+        $this->beConstructedWith(self::EXPRESSION, [$specificationA, $specificationB]);
 
         $dqlAlias = 'a';
 
-        $modifierA->modify($queryBuilder, $dqlAlias)->shouldBeCalled();
-        $modifierB->modify($queryBuilder, $dqlAlias)->shouldBeCalled();
+        $specificationA->getCondition($queryBuilder, $dqlAlias)->willReturn(null);
+        $specificationB->getCondition($queryBuilder, $dqlAlias)->willReturn(null);
+        $queryBuilder->expr()->willReturn($expression);
 
-        $this->supports('foo')->shouldReturn(true);
         $this->getCondition($queryBuilder, $dqlAlias)->shouldReturn(null);
-        $this->modify($queryBuilder, $dqlAlias);
     }
 
     public function it_should_throw_exception_on_invalid_type(
@@ -88,19 +73,6 @@ class CompositeSpec extends ObjectBehavior
 
         $this->shouldThrow(InvalidArgumentException::class)
             ->during('__construct', [$type, [$specificationA, $specificationB]]);
-    }
-
-    public function it_should_throw_exception_when_child_does_not_support_class(
-        SpecificationInterface $specificationA,
-        SpecificationInterface $specificationB
-    ) {
-        $className = 'foo';
-        $this->beConstructedWith(self::EXPRESSION, [$specificationA, $specificationB]);
-
-        $specificationA->supports($className)->willReturn(true);
-        $specificationB->supports($className)->willReturn(false);
-
-        $this->supports($className)->shouldReturn(false);
     }
 
     public function it_should_throw_exception_on_invalid_child()
