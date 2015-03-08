@@ -107,7 +107,7 @@ class AdsByUser extends SpecificationCollection
 
     public function isSatisfiedBy($value)
     {
-        return $value == Advertisement::class && parent::supports($className);
+        return $value == Advertisement::class && parent::isSatisfiedBy($value);
     }
 }
 
