@@ -8,8 +8,7 @@ use Rb\Specification\Doctrine\Exception\LogicException;
 use Rb\Specification\Doctrine\Result\ModifierInterface;
 
 /**
- * Class SpecificationRepository
- * @package Rb\Specification\Doctrine
+ * Class SpecificationRepository.
  */
 class SpecificationRepository extends EntityRepository
 {
@@ -19,10 +18,13 @@ class SpecificationRepository extends EntityRepository
     private $dqlAlias = 'e';
 
     /**
-     * Get the query after matching with given specification
-     * @param  SpecificationInterface $specification
-     * @param  ModifierInterface      $resultModifier
+     * Get the query after matching with given specification.
+     *
+     * @param SpecificationInterface $specification
+     * @param ModifierInterface      $resultModifier
+     *
      * @return Query
+     *
      * @throws LogicException
      */
     public function match(SpecificationInterface $specification, ModifierInterface $resultModifier = null)

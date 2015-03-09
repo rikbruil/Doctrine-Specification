@@ -69,7 +69,7 @@ class Comparison implements SpecificationInterface
     }
 
     /**
-     * Return a string expression which can be used as condition (in WHERE-clause)
+     * Return a string expression which can be used as condition (in WHERE-clause).
      *
      * @param QueryBuilder $queryBuilder
      * @param string       $dqlAlias
@@ -93,7 +93,7 @@ class Comparison implements SpecificationInterface
     }
 
     /**
-     * Return automatically generated parameter name
+     * Return automatically generated parameter name.
      *
      * @param QueryBuilder $queryBuilder
      *

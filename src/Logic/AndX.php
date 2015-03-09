@@ -5,8 +5,7 @@ namespace Rb\Specification\Doctrine\Logic;
 use Rb\Specification\Doctrine\SpecificationInterface;
 
 /**
- * AndX specification lets you compose a new Specification with other specification classes
- * @package Rb\Specification\Doctrine\Logic
+ * AndX specification lets you compose a new Specification with other specification classes.
  */
 class AndX extends Composite
 {

@@ -7,9 +7,10 @@ use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 class LessThanOrEquals extends Comparison
 {
     /**
-     * @param  string                   $field
-     * @param  string                   $value
-     * @param  string|null              $dqlAlias
+     * @param string      $field
+     * @param string      $value
+     * @param string|null $dqlAlias
+     *
      * @throws InvalidArgumentException
      */
     public function __construct($field, $value, $dqlAlias = null)

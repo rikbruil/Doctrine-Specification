@@ -7,8 +7,7 @@ use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 use Rb\Specification\Doctrine\SpecificationInterface;
 
 /**
- * Class Join
- * @package Rb\Specification\Doctrine\Query
+ * Class Join.
  */
 class Join implements SpecificationInterface
 {
@@ -16,7 +15,7 @@ class Join implements SpecificationInterface
     const LEFT_JOIN = 'leftJoin';
     const INNER_JOIN = 'innerJoin';
 
-    /**
+    /*
      * @var string[]
      */
     static protected $types = [self::JOIN, self::LEFT_JOIN, self::INNER_JOIN];
@@ -42,9 +41,10 @@ class Join implements SpecificationInterface
     private $type = self::JOIN;
 
     /**
-     * @param  string                   $field
-     * @param  string                   $newAlias
-     * @param  string|null              $dqlAlias
+     * @param string      $field
+     * @param string      $newAlias
+     * @param string|null $dqlAlias
+     *
      * @throws InvalidArgumentException
      */
     public function __construct($field, $newAlias, $dqlAlias = null)
@@ -55,7 +55,8 @@ class Join implements SpecificationInterface
     }
 
     /**
-     * @param  string                   $type
+     * @param string $type
+     *
      * @throws InvalidArgumentException
      */
     public function setType($type)

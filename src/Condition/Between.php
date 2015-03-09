@@ -5,9 +5,6 @@ namespace Rb\Specification\Doctrine\Condition;
 use Doctrine\ORM\QueryBuilder;
 use Rb\Specification\Doctrine\SpecificationInterface;
 
-/**
- * @package Rb\Specification\Doctrine\Condition
- */
 class Between implements SpecificationInterface
 {
     /**
@@ -75,8 +72,9 @@ class Between implements SpecificationInterface
     }
 
     /**
-     * @param  string       $type
-     * @param  QueryBuilder $queryBuilder
+     * @param string       $type
+     * @param QueryBuilder $queryBuilder
+     *
      * @return string
      */
     private function generateParameterName($type, QueryBuilder $queryBuilder)

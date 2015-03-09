@@ -53,7 +53,8 @@ class In implements SpecificationInterface
     }
 
     /**
-     * @param  QueryBuilder $queryBuilder
+     * @param QueryBuilder $queryBuilder
+     *
      * @return string
      */
     private function generateParameterName(QueryBuilder $queryBuilder)

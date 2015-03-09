@@ -6,8 +6,7 @@ use Doctrine\ORM\QueryBuilder;
 use Rb\Specification\Doctrine\SpecificationInterface;
 
 /**
- * Class Not negates whatever specification/filter is passed inside it
- * @package Rb\Specification\Doctrine\Logic
+ * Class Not negates whatever specification/filter is passed inside it.
  */
 class Not implements SpecificationInterface
 {
@@ -25,8 +24,9 @@ class Not implements SpecificationInterface
     }
 
     /**
-     * @param  QueryBuilder $queryBuilder
-     * @param  string       $dqlAlias
+     * @param QueryBuilder $queryBuilder
+     * @param string       $dqlAlias
+     *
      * @return string
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)

@@ -6,15 +6,14 @@ use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\Query;
 
 /**
- * Hydrate results as array instead of objects
- * @package Rb\Specification\Doctrine\Result
+ * Hydrate results as array instead of objects.
  */
 class AsArray implements ModifierInterface
 {
     /**
-     * Modify the query (e.g. select more fields/relations)
-     * @param  AbstractQuery $query
-     * @return void
+     * Modify the query (e.g. select more fields/relations).
+     *
+     * @param AbstractQuery $query
      */
     public function modify(AbstractQuery $query)
     {

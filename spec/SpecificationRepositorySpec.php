@@ -101,7 +101,8 @@ class SpecificationRepositorySpec extends ObjectBehavior
     }
 
     /**
-     * Prepare mocks
+     * Prepare mocks.
+     *
      * @param SpecificationInterface $specification
      * @param EntityManager          $entityManager
      * @param QueryBuilder           $queryBuilder

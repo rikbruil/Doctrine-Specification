@@ -5,8 +5,7 @@ namespace Rb\Specification\Doctrine\Logic;
 use Rb\Specification\Doctrine\SpecificationInterface;
 
 /**
- * Class OrX
- * @package Rb\Specification\Doctrine\Logic
+ * Class OrX.
  */
 class OrX extends Composite
 {

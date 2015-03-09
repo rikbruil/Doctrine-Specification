@@ -7,8 +7,7 @@ use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 use Rb\Specification\Doctrine\SpecificationInterface;
 
 /**
- * Class OrderBy
- * @package Rb\Specification\Doctrine\Query
+ * Class OrderBy.
  */
 class OrderBy implements SpecificationInterface
 {
@@ -33,9 +32,10 @@ class OrderBy implements SpecificationInterface
     protected $dqlAlias;
 
     /**
-     * @param  string                   $field
-     * @param  string                   $order
-     * @param  string|null              $dqlAlias
+     * @param string      $field
+     * @param string      $order
+     * @param string|null $dqlAlias
+     *
      * @throws InvalidArgumentException
      */
     public function __construct($field, $order = self::ASC, $dqlAlias = null)

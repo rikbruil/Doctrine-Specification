@@ -18,8 +18,10 @@ class SpecificationCollection extends ArrayCollection implements SpecificationIn
     }
 
     /**
-     * @param  Condition\ModifierInterface|Query\ModifierInterface $value
+     * @param Condition\ModifierInterface|Query\ModifierInterface $value
+     *
      * @return bool
+     *
      * @throws InvalidArgumentException
      */
     public function add($value)
@@ -46,7 +48,7 @@ class SpecificationCollection extends ArrayCollection implements SpecificationIn
 
         $result = array_filter(array_map($match, $this->toArray()));
         if (empty($result)) {
-            return null;
+            return;
         }
 
         return call_user_func_array(

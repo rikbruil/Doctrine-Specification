@@ -7,13 +7,13 @@ use Doctrine\ORM\AbstractQuery;
 use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 
 /**
- * CollectionResultModifierInterface allows to compose one/more ResultModifier classes
- * @package Rb\Specification\Doctrine\Result
+ * CollectionResultModifierInterface allows to compose one/more ResultModifier classes.
  */
 class ModifierCollection extends ArrayCollection implements ModifierInterface
 {
     /**
-     * Compose one or more ResultModifier and evaluate as a single modifier
+     * Compose one or more ResultModifier and evaluate as a single modifier.
+     *
      * @param ModifierInterface ...$modifiers
      */
     public function __construct()
@@ -22,8 +22,10 @@ class ModifierCollection extends ArrayCollection implements ModifierInterface
     }
 
     /**
-     * @param  ModifierInterface        $value
+     * @param ModifierInterface $value
+     *
      * @return bool
+     *
      * @throws InvalidArgumentException
      */
     public function add($value)
@@ -40,8 +42,10 @@ class ModifierCollection extends ArrayCollection implements ModifierInterface
     }
 
     /**
-     * Modify the query (e.g. select more fields/relations)
-     * @param  AbstractQuery            $query
+     * Modify the query (e.g. select more fields/relations).
+     *
+     * @param AbstractQuery $query
+     *
      * @throws InvalidArgumentException
      */
     public function modify(AbstractQuery $query)

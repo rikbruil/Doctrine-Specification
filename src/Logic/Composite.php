@@ -10,8 +10,7 @@ use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 use Rb\Specification\Doctrine\SpecificationInterface;
 
 /**
- * Class Composite
- * @package Rb\Specification\Doctrine\Logic
+ * Class Composite.
  */
 class Composite extends ArrayCollection implements SpecificationInterface
 {
@@ -39,9 +38,12 @@ class Composite extends ArrayCollection implements SpecificationInterface
     }
 
     /**
-     * Set the type of comparison
-     * @param  string                   $type
+     * Set the type of comparison.
+     *
+     * @param string $type
+     *
      * @return $this
+     *
      * @throws InvalidArgumentException
      */
     protected function setType($type)
@@ -57,8 +59,10 @@ class Composite extends ArrayCollection implements SpecificationInterface
     }
 
     /**
-     * @param  SpecificationInterface   $value
+     * @param SpecificationInterface $value
+     *
      * @return bool
+     *
      * @throws InvalidArgumentException
      */
     public function add($value)
@@ -75,7 +79,8 @@ class Composite extends ArrayCollection implements SpecificationInterface
     }
 
     /**
-     * @param  SpecificationInterface[] $children
+     * @param SpecificationInterface[] $children
+     *
      * @return $this
      */
     protected function setChildren(array $children)
@@ -91,7 +96,7 @@ class Composite extends ArrayCollection implements SpecificationInterface
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
-        /**
+        /*
          * @param SpecificationInterface $modifier
          * @return string|null
          */
@@ -101,7 +106,7 @@ class Composite extends ArrayCollection implements SpecificationInterface
 
         $result = array_filter(array_map($match, $this->toArray()));
         if (empty($result)) {
-            return null;
+            return;
         }
 
         return call_user_func_array(
@@ -111,8 +116,10 @@ class Composite extends ArrayCollection implements SpecificationInterface
     }
 
     /**
-     * Returns a boolean indicating whether or not this specification can support the given class
-     * @param  mixed $value
+     * Returns a boolean indicating whether or not this specification can support the given class.
+     *
+     * @param mixed $value
+     *
      * @return bool
      */
     public function isSatisfiedBy($value)

@@ -6,8 +6,7 @@ use Doctrine\ORM\QueryBuilder;
 use Rb\Specification\Doctrine\SpecificationInterface;
 
 /**
- * Select will modify the query-builder so you can specify SELECT-statements
- * @package Rb\Specification\Doctrine\Query
+ * Select will modify the query-builder so you can specify SELECT-statements.
  */
 class Select implements SpecificationInterface
 {
