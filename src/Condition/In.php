@@ -56,7 +56,7 @@ class In implements SpecificationInterface
      * @param  QueryBuilder $queryBuilder
      * @return string
      */
-    public function generateParameterName(QueryBuilder $queryBuilder)
+    private function generateParameterName(QueryBuilder $queryBuilder)
     {
         return sprintf('in_%d', count($queryBuilder->getParameters()));
     }
