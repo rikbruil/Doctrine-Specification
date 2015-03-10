@@ -44,7 +44,7 @@ use Rb\Specification\Doctrine\Condition\IsNull;
 use Rb\Specification\Doctrine\Condition\LowerThan;
 use Rb\Specification\Doctrine\Logic\AndX;
 use Rb\Specification\Doctrine\Logic\OrX;
-use Rb\Specification\Doctrine\SpecificationCollection;
+use Rb\Specification\Doctrine\Specification;
 
 // Using the lib
 $spec = new Specification([
