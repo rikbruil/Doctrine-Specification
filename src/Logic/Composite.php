@@ -70,7 +70,7 @@ class Composite extends ArrayCollection implements SpecificationInterface
             throw new InvalidArgumentException(sprintf(
                 '"%s" does not implement "%s"!',
                 (is_object($value)) ? get_class($value) : $value,
-                Condition\ModifierInterface::class
+                SpecificationInterface::class
             ));
         }
 
