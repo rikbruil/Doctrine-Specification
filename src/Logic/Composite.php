@@ -4,7 +4,6 @@ namespace Rb\Specification\Doctrine\Logic;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\QueryBuilder;
-use Rb\Specification\Doctrine\Condition;
 use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 use Rb\Specification\Doctrine\SpecificationInterface;
 
