@@ -14,13 +14,13 @@ before_install:
   - travis_retry composer self-update
 
 install:
-  - travis_retry composer install
+  - travis_retry composer install --no-interaction
 
 before_script:
   - mkdir -p build/logs
 
 script:
-  - ./vendor/bin/phpspec run
+  - composer test
 
 after_success:
   - php vendor/bin/coveralls -v
