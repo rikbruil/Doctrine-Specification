@@ -2,60 +2,94 @@
 
 namespace spec\Rb\Specification\Doctrine;
 
+use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
 use PhpSpec\ObjectBehavior;
-use Rb\Specification\Doctrine\Condition;
 use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
-use Rb\Specification\Doctrine\Result;
 use Rb\Specification\Doctrine\SpecificationInterface;
 
 class SpecificationSpec extends ObjectBehavior
 {
-    private $alias     = 's';
-    private $className = 'foo';
-    private $condition = 'condition';
-
-    public function it_should_accept_other_specifications(
-        QueryBuilder $queryBuilder,
-        SpecificationInterface $specification
-    ) {
-        $specification->isSatisfiedBy($this->className)->willReturn(true);
-        $specification->modify($queryBuilder, $this->alias)->willReturn($this->condition);
-
-        $this->setSpecification($specification);
-
-        $this->isSatisfiedBy($this->className)->shouldReturn(true);
-        $this->modify($queryBuilder, $this->alias)->shouldReturn($this->condition);
-    }
-
-    public function it_should_accept_query_modifiers(QueryBuilder $queryBuilder, SpecificationInterface $modifier)
+    public function it_is_a_specification()
     {
-        $modifier->isSatisfiedBy($this->className)->willReturn(true);
-        $modifier->modify($queryBuilder, $this->alias)->shouldBeCalled();
-
-        $this->setSpecification($modifier);
-
-        $this->isSatisfiedBy($this->className)->shouldReturn(true);
-        $this->modify($queryBuilder, $this->alias)->shouldReturn('');
+        $this->shouldHaveType(SpecificationInterface::class);
     }
 
-    public function it_should_accept_condition_modifiers(
+    public function it_modifies_all_child_queries(
         QueryBuilder $queryBuilder,
-        SpecificationInterface $modifier
+        SpecificationInterface $specificationA,
+        SpecificationInterface $specificationB
     ) {
-        $modifier->isSatisfiedBy($this->className)->willReturn(true);
-        $modifier->modify($queryBuilder, $this->alias)->willReturn($this->condition);
+        $this->beConstructedWith([$specificationA, $specificationB]);
+        $dqlAlias = 'a';
 
-        $this->setSpecification($modifier);
+        $specificationA->modify($queryBuilder, $dqlAlias)->shouldBeCalled();
+        $specificationB->modify($queryBuilder, $dqlAlias)->shouldBeCalled();
 
-        $this->isSatisfiedBy($this->className)->shouldReturn(true);
-        $this->modify($queryBuilder, $this->alias)->shouldReturn($this->condition);
+        $this->modify($queryBuilder, $dqlAlias);
     }
 
-    public function it_should_throw_an_exception_when_setting_incorrect_specification(
-        Result\ModifierInterface $modifier
+    public function it_supports_conditions(
+        QueryBuilder $queryBuilder,
+        Expr $expression,
+        SpecificationInterface $conditionA,
+        SpecificationInterface $conditionB,
+        $x,
+        $y
     ) {
+        $dqlAlias = 'a';
+
+        $this[] = $conditionA;
+        $this[] = $conditionB;
+
+        $conditionA->isSatisfiedBy('foo')->willReturn(true);
+        $conditionB->isSatisfiedBy('foo')->willReturn(true);
+
+        $conditionA->modify($queryBuilder, $dqlAlias)->willReturn($x);
+        $conditionB->modify($queryBuilder, $dqlAlias)->willReturn($y);
+        $queryBuilder->expr()->willReturn($expression);
+
+        $expression->andX($x, $y)->shouldBeCalled();
+
+        $this->isSatisfiedBy('foo')->shouldReturn(true);
+        $this->modify($queryBuilder, $dqlAlias);
+    }
+
+    public function it_supports_query_modifiers(
+        QueryBuilder $queryBuilder,
+        SpecificationInterface $modifierA,
+        SpecificationInterface $modifierB
+    ) {
+        $this->beConstructedWith([$modifierA, $modifierB]);
+
+        $dqlAlias = 'a';
+
+        $modifierA->isSatisfiedBy('foo')->willReturn(true);
+        $modifierB->isSatisfiedBy('foo')->willReturn(true);
+
+        $modifierA->modify($queryBuilder, $dqlAlias)->shouldBeCalled();
+        $modifierB->modify($queryBuilder, $dqlAlias)->shouldBeCalled();
+
+        $this->isSatisfiedBy('foo')->shouldReturn(true);
+        $this->modify($queryBuilder, $dqlAlias)->shouldReturn(null);
+    }
+
+    public function it_should_throw_exception_when_child_does_not_support_class(
+        SpecificationInterface $specificationA,
+        SpecificationInterface $specificationB
+    ) {
+        $className = 'foo';
+        $this->beConstructedWith([$specificationA, $specificationB]);
+
+        $specificationA->isSatisfiedBy($className)->willReturn(true);
+        $specificationB->isSatisfiedBy($className)->willReturn(false);
+
+        $this->isSatisfiedBy($className)->shouldReturn(false);
+    }
+
+    public function it_should_throw_exception_on_invalid_child()
+    {
         $this->shouldThrow(InvalidArgumentException::class)
-            ->during('setSpecification', [$modifier]);
+            ->during('add', ['bar']);
     }
 }

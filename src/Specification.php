@@ -2,33 +2,42 @@
 
 namespace Rb\Specification\Doctrine;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\QueryBuilder;
 use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 
 /**
  * Specification can be used as a quick-start to writing your own specifications.
+ * It extends Doctrines ArrayCollection class so you can compose specifications.
  */
-class Specification implements SpecificationInterface
+class Specification extends ArrayCollection implements SpecificationInterface
 {
     /**
-     * @var SpecificationInterface
+     * @param SpecificationInterface[] $elements
      */
-    protected $specification;
+    public function __construct(array $elements = [])
+    {
+        array_map([$this, 'add'], $elements);
+    }
 
     /**
-     * Set a specification to be used internally.
-     *
-     * @param SpecificationInterface $specification
+     * @param SpecificationInterface $value
      *
      * @throws InvalidArgumentException
+     *
+     * @return bool
      */
-    public function setSpecification($specification)
+    public function add($value)
     {
-        if (! $specification instanceof SpecificationInterface) {
-            throw new InvalidArgumentException();
+        if (! $value instanceof SpecificationInterface) {
+            throw new InvalidArgumentException(sprintf(
+                '"%s" does not implement "%s"!',
+                (is_object($value)) ? get_class($value) : $value,
+                SpecificationInterface::class
+            ));
         }
 
-        $this->specification = $specification;
+        return parent::add($value);
     }
 
     /**
@@ -36,8 +45,19 @@ class Specification implements SpecificationInterface
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
-        return (string) $this->specification
-            ->modify($queryBuilder, $dqlAlias);
+        $match = function (SpecificationInterface $specification) use ($queryBuilder, $dqlAlias) {
+            return $specification->modify($queryBuilder, $dqlAlias);
+        };
+
+        $result = array_filter(array_map($match, $this->toArray()));
+        if (empty($result)) {
+            return;
+        }
+
+        return call_user_func_array(
+            [$queryBuilder->expr(), 'andX'],
+            $result
+        );
     }
 
     /**
@@ -45,6 +65,13 @@ class Specification implements SpecificationInterface
      */
     public function isSatisfiedBy($value)
     {
-        return $this->specification->isSatisfiedBy($value);
+        /** @var SpecificationInterface $child */
+        foreach ($this as $child) {
+            if (! $child->isSatisfiedBy($value)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

@@ -47,7 +47,7 @@ use Rb\Specification\Doctrine\Logic\OrX;
 use Rb\Specification\Doctrine\SpecificationCollection;
 
 // Using the lib
-$spec = new SpecificationCollection([
+$spec = new Specification([
     new Equals('ended', 0),
     new OrX(
         new LowerThan('endDate', new \DateTime()),
@@ -68,7 +68,7 @@ A bonus of this pattern is composition, which makes specifications very reusable
 
 use Entity\Advertisement;
 
-class ExpiredAds extends SpecificationCollection
+class ExpiredAds extends Specification
 {
     public function __construct()
     {
@@ -93,7 +93,7 @@ class ExpiredAds extends SpecificationCollection
 
 use Entity\User;
 
-class AdsByUser extends SpecificationCollection
+class AdsByUser extends Specification
 {
     public function __construct(User $user)
     {
@@ -119,7 +119,7 @@ class SomeService
      */
     public function myQuery(User $user)
     {
-        $spec = new SpecificationCollection([
+        $spec = new Specification([
             new ExpiredAds(),
             new AdsByUser($user),
         ]);
@@ -133,7 +133,7 @@ class SomeService
      */
     public function myPaginatedQuery(User $user, $page = 1, $size = 10)
     {
-        $spec = new SpecificationCollection([
+        $spec = new Specification([
             new ExpiredAds(),
             new AdsByUser($user),
         ]);
