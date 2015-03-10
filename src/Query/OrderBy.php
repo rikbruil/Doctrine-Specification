@@ -40,7 +40,7 @@ class OrderBy implements SpecificationInterface
      */
     public function __construct($field, $order = self::ASC, $dqlAlias = null)
     {
-        if (! in_array($order, self::$validOrder)) {
+        if (! in_array($order, self::$validOrder, true)) {
             throw new InvalidArgumentException();
         }
 

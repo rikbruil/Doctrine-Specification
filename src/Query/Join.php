@@ -61,7 +61,7 @@ class Join implements SpecificationInterface
      */
     public function setType($type)
     {
-        if (! in_array($type, self::$types)) {
+        if (! in_array($type, self::$types, true)) {
             throw new InvalidArgumentException(sprintf(
                 '"%s" is not a valid type! Valid types: %s',
                 $type,

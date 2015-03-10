@@ -48,7 +48,7 @@ class Composite extends ArrayCollection implements SpecificationInterface
      */
     protected function setType($type)
     {
-        if (!in_array($type, self::$types)) {
+        if (! in_array($type, self::$types, true)) {
             $message = sprintf('"%s" is not a valid type! Valid types: %s', $type, implode(', ', self::$types));
             throw new InvalidArgumentException($message);
         }
