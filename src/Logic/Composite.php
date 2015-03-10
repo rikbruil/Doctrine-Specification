@@ -3,7 +3,6 @@
 namespace Rb\Specification\Doctrine\Logic;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
 use Rb\Specification\Doctrine\Condition;
 use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
@@ -100,7 +99,7 @@ class Composite extends ArrayCollection implements SpecificationInterface
          * @param SpecificationInterface $modifier
          * @return string|null
          */
-        $match = function ($modifier) use ($queryBuilder, $dqlAlias) {
+        $match = function (SpecificationInterface $modifier) use ($queryBuilder, $dqlAlias) {
             return $modifier->modify($queryBuilder, $dqlAlias);
         };
 

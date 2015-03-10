@@ -1,5 +1,6 @@
 {
   "name": "rikbruil/doctrine-specification",
+  "description": "Doctrine Specification pattern for building queries dynamically and with re-usable classes for composition.",
   "type": "library",
   "keywords": ["doctrine", "repository", "specification"],
   "license": "MIT",
