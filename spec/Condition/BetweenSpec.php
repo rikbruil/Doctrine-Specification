@@ -28,7 +28,7 @@ class BetweenSpec extends ObjectBehavior
 
     public function it_returns_an_expression_func_object(QueryBuilder $queryBuilder, ArrayCollection $parameters, Expr $expr)
     {
-        $dqlAlias = 'a';
+        $dqlAlias   = 'a';
         $expression = 'a.foo between(:from_10, :to_10)';
 
         $queryBuilder->expr()->willReturn($expr);
@@ -46,7 +46,7 @@ class BetweenSpec extends ObjectBehavior
 
     public function it_should_use_dql_alias_if_set(QueryBuilder $queryBuilder, ArrayCollection $parameters, Expr $expr)
     {
-        $dqlAlias = 'x';
+        $dqlAlias   = 'x';
         $expression = 'x.foo between(:from_10, :to_10)';
 
         $this->beConstructedWith($this->field, $this->from, $this->to, $dqlAlias);

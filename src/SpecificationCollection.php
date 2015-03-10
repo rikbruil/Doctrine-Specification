@@ -20,9 +20,9 @@ class SpecificationCollection extends ArrayCollection implements SpecificationIn
     /**
      * @param Condition\ModifierInterface|Query\ModifierInterface $value
      *
-     * @return bool
-     *
      * @throws InvalidArgumentException
+     *
+     * @return bool
      */
     public function add($value)
     {

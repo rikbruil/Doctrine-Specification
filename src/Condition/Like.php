@@ -6,8 +6,8 @@ use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 
 class Like extends Comparison
 {
-    const CONTAINS = '%%%s%%';
-    const ENDS_WITH = '%%%s';
+    const CONTAINS    = '%%%s%%';
+    const ENDS_WITH   = '%%%s';
     const STARTS_WITH = '%s%%';
 
     /**

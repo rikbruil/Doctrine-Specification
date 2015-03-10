@@ -3,9 +3,9 @@
 namespace spec\Rb\Specification\Doctrine\Query;
 
 use Doctrine\ORM\QueryBuilder;
+use PhpSpec\ObjectBehavior;
 use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 use Rb\Specification\Doctrine\Query\Join;
-use PhpSpec\ObjectBehavior;
 use Rb\Specification\Doctrine\SpecificationInterface;
 
 class JoinSpec extends ObjectBehavior

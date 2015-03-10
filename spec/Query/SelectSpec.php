@@ -9,7 +9,7 @@ class SelectSpec extends ObjectBehavior
 {
     public function it_should_add_a_select_to_query_builder(QueryBuilder $queryBuilder)
     {
-        $alias = 'a';
+        $alias  = 'a';
         $entity = 'foo';
         $this->beConstructedWith($entity);
 

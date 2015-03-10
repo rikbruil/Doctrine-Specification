@@ -24,9 +24,9 @@ class ModifierCollection extends ArrayCollection implements ModifierInterface
     /**
      * @param ModifierInterface $value
      *
-     * @return bool
-     *
      * @throws InvalidArgumentException
+     *
+     * @return bool
      */
     public function add($value)
     {

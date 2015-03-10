@@ -4,10 +4,10 @@ namespace spec\Rb\Specification\Doctrine\Logic;
 
 use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
+use PhpSpec\ObjectBehavior;
 use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 use Rb\Specification\Doctrine\Logic\Composite;
 use Rb\Specification\Doctrine\SpecificationInterface;
-use PhpSpec\ObjectBehavior;
 
 class CompositeSpec extends ObjectBehavior
 {

@@ -15,7 +15,7 @@ use Rb\Specification\Doctrine\SpecificationInterface;
 class Composite extends ArrayCollection implements SpecificationInterface
 {
     const AND_X = 'andX';
-    const OR_X = 'orX';
+    const OR_X  = 'orX';
 
     /**
      * @var string[]
@@ -42,9 +42,9 @@ class Composite extends ArrayCollection implements SpecificationInterface
      *
      * @param string $type
      *
-     * @return $this
-     *
      * @throws InvalidArgumentException
+     *
+     * @return $this
      */
     protected function setType($type)
     {
@@ -61,9 +61,9 @@ class Composite extends ArrayCollection implements SpecificationInterface
     /**
      * @param SpecificationInterface $value
      *
-     * @return bool
-     *
      * @throws InvalidArgumentException
+     *
+     * @return bool
      */
     public function add($value)
     {

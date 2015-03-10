@@ -4,8 +4,8 @@ namespace spec\Rb\Specification\Doctrine\Logic;
 
 use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
-use Rb\Specification\Doctrine\SpecificationInterface;
 use PhpSpec\ObjectBehavior;
+use Rb\Specification\Doctrine\SpecificationInterface;
 
 class NotSpec extends ObjectBehavior
 {
@@ -16,8 +16,8 @@ class NotSpec extends ObjectBehavior
 
     public function it_calls_parent_match(QueryBuilder $queryBuilder, Expr $expr, SpecificationInterface $condition)
     {
-        $dqlAlias = 'a';
-        $expression = 'expression';
+        $dqlAlias         = 'a';
+        $expression       = 'expression';
         $parentExpression = 'foo';
 
         $queryBuilder->expr()->willReturn($expr);

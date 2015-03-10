@@ -11,8 +11,8 @@ use Rb\Specification\Doctrine\SpecificationInterface;
  */
 class Join implements SpecificationInterface
 {
-    const JOIN = 'join';
-    const LEFT_JOIN = 'leftJoin';
+    const JOIN       = 'join';
+    const LEFT_JOIN  = 'leftJoin';
     const INNER_JOIN = 'innerJoin';
 
     /*
@@ -49,7 +49,7 @@ class Join implements SpecificationInterface
      */
     public function __construct($field, $newAlias, $dqlAlias = null)
     {
-        $this->field = $field;
+        $this->field    = $field;
         $this->newAlias = $newAlias;
         $this->dqlAlias = $dqlAlias;
     }

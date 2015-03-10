@@ -9,12 +9,12 @@ use Rb\Specification\Doctrine\SpecificationInterface;
 
 class Comparison implements SpecificationInterface
 {
-    const EQ = '=';
-    const NEQ = '<>';
-    const LT = '<';
-    const LTE = '<=';
-    const GT = '>';
-    const GTE = '>=';
+    const EQ   = '=';
+    const NEQ  = '<>';
+    const LT   = '<';
+    const LTE  = '<=';
+    const GT   = '>';
+    const GTE  = '>=';
     const LIKE = 'LIKE';
 
     /**
@@ -63,8 +63,8 @@ class Comparison implements SpecificationInterface
         }
 
         $this->operator = $operator;
-        $this->field = $field;
-        $this->value = $value;
+        $this->field    = $field;
+        $this->value    = $value;
         $this->dqlAlias = $dqlAlias;
     }
 

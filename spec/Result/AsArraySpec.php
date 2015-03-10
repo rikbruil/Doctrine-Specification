@@ -4,8 +4,8 @@ namespace spec\Rb\Specification\Doctrine\Result;
 
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\Query;
-use Rb\Specification\Doctrine\Result\ModifierInterface;
 use PhpSpec\ObjectBehavior;
+use Rb\Specification\Doctrine\Result\ModifierInterface;
 
 class AsArraySpec extends ObjectBehavior
 {

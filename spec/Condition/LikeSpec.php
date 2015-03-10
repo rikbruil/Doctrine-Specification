@@ -4,8 +4,8 @@ namespace spec\Rb\Specification\Doctrine\Condition;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\QueryBuilder;
-use Rb\Specification\Doctrine\Condition\Like;
 use PhpSpec\ObjectBehavior;
+use Rb\Specification\Doctrine\Condition\Like;
 use Rb\Specification\Doctrine\SpecificationInterface;
 
 class LikeSpec extends ObjectBehavior

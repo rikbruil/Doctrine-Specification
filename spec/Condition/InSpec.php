@@ -26,7 +26,7 @@ class InSpec extends ObjectBehavior
 
     public function it_returns_an_expression_func_object(QueryBuilder $queryBuilder, ArrayCollection $parameters, Expr $expr)
     {
-        $dqlAlias = 'a';
+        $dqlAlias   = 'a';
         $expression = 'a.foo in(:in_10)';
 
         $queryBuilder->expr()->willReturn($expr);
@@ -42,7 +42,7 @@ class InSpec extends ObjectBehavior
 
     public function it_should_use_dql_alias_if_set(QueryBuilder $queryBuilder, ArrayCollection $parameters, Expr $expr)
     {
-        $dqlAlias = 'x';
+        $dqlAlias   = 'x';
         $expression = 'x.foo in(:in_10)';
 
         $this->beConstructedWith($this->field, $this->value, $dqlAlias);

@@ -23,7 +23,7 @@ class IsNull implements SpecificationInterface
      */
     public function __construct($field, $dqlAlias = null)
     {
-        $this->field = $field;
+        $this->field    = $field;
         $this->dqlAlias = $dqlAlias;
     }
 

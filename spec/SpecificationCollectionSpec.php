@@ -4,9 +4,9 @@ namespace spec\Rb\Specification\Doctrine;
 
 use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
+use PhpSpec\ObjectBehavior;
 use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 use Rb\Specification\Doctrine\SpecificationInterface;
-use PhpSpec\ObjectBehavior;
 
 class SpecificationCollectionSpec extends ObjectBehavior
 {

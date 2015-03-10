@@ -29,8 +29,8 @@ class In implements SpecificationInterface
      */
     public function __construct($field, $value, $dqlAlias = null)
     {
-        $this->field = $field;
-        $this->value = $value;
+        $this->field    = $field;
+        $this->value    = $value;
         $this->dqlAlias = $dqlAlias;
     }
 

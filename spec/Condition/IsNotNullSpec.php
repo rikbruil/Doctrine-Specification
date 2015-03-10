@@ -9,7 +9,7 @@ use Rb\Specification\Doctrine\SpecificationInterface;
 
 class IsNotNullSpec extends ObjectBehavior
 {
-    private $field = 'foo';
+    private $field    = 'foo';
     private $dqlAlias = 'a';
 
     public function let()

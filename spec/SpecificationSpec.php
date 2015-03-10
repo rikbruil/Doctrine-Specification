@@ -3,15 +3,15 @@
 namespace spec\Rb\Specification\Doctrine;
 
 use Doctrine\ORM\QueryBuilder;
+use PhpSpec\ObjectBehavior;
 use Rb\Specification\Doctrine\Condition;
 use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 use Rb\Specification\Doctrine\Result;
 use Rb\Specification\Doctrine\SpecificationInterface;
-use PhpSpec\ObjectBehavior;
 
 class SpecificationSpec extends ObjectBehavior
 {
-    private $alias = 's';
+    private $alias     = 's';
     private $className = 'foo';
     private $condition = 'condition';
 

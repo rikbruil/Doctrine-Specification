@@ -11,7 +11,7 @@ use Rb\Specification\Doctrine\SpecificationInterface;
  */
 class OrderBy implements SpecificationInterface
 {
-    const ASC = 'ASC';
+    const ASC  = 'ASC';
     const DESC = 'DESC';
 
     static private $validOrder = [self::ASC, self::DESC];
@@ -44,8 +44,8 @@ class OrderBy implements SpecificationInterface
             throw new InvalidArgumentException();
         }
 
-        $this->field = $field;
-        $this->order = $order;
+        $this->field    = $field;
+        $this->order    = $order;
         $this->dqlAlias = $dqlAlias;
     }
 

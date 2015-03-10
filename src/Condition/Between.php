@@ -35,9 +35,9 @@ class Between implements SpecificationInterface
      */
     public function __construct($field, $from, $to, $dqlAlias = null)
     {
-        $this->field = $field;
-        $this->from = $from;
-        $this->to = $to;
+        $this->field    = $field;
+        $this->from     = $from;
+        $this->to       = $to;
         $this->dqlAlias = $dqlAlias;
     }
 
@@ -59,7 +59,7 @@ class Between implements SpecificationInterface
         }
 
         $fromParam = $this->generateParameterName('from', $queryBuilder);
-        $toParam = $this->generateParameterName('to', $queryBuilder);
+        $toParam   = $this->generateParameterName('to', $queryBuilder);
 
         $queryBuilder->setParameter($fromParam, $this->from);
         $queryBuilder->setParameter($toParam, $this->to);

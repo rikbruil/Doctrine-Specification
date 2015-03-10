@@ -3,10 +3,10 @@
 namespace spec\Rb\Specification\Doctrine\Result;
 
 use Doctrine\ORM\AbstractQuery;
-use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
-use Rb\Specification\Doctrine\Result;
-use Rb\Specification\Doctrine\Query;
 use PhpSpec\ObjectBehavior;
+use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
+use Rb\Specification\Doctrine\Query;
+use Rb\Specification\Doctrine\Result;
 
 class ModifierCollectionSpec extends ObjectBehavior
 {

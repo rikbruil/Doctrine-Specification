@@ -23,9 +23,9 @@ class SpecificationRepository extends EntityRepository
      * @param SpecificationInterface $specification
      * @param ModifierInterface      $resultModifier
      *
-     * @return Query
-     *
      * @throws LogicException
+     *
+     * @return Query
      */
     public function match(SpecificationInterface $specification, ModifierInterface $resultModifier = null)
     {
@@ -36,9 +36,9 @@ class SpecificationRepository extends EntityRepository
             ));
         }
 
-        $dqlAlias = $this->dqlAlias;
+        $dqlAlias     = $this->dqlAlias;
         $queryBuilder = $this->createQueryBuilder($dqlAlias);
-        $condition = $specification->modify($queryBuilder, $dqlAlias);
+        $condition    = $specification->modify($queryBuilder, $dqlAlias);
 
         if (! empty($condition)) {
             $queryBuilder->where($condition);
