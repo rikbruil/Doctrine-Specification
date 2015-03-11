@@ -113,6 +113,8 @@ class Join implements SpecificationInterface
     }
 
     /**
+     * Set the condition type to be used on the join (WITH/ON).
+     *
      * @param string $conditionType
      */
     public function setConditionType($conditionType)
@@ -121,6 +123,8 @@ class Join implements SpecificationInterface
     }
 
     /**
+     * Set the condition to be used for the join statement.
+     *
      * @param string $condition
      */
     public function setCondition($condition)
@@ -129,6 +133,8 @@ class Join implements SpecificationInterface
     }
 
     /**
+     * Set the property which will be used as index for the returned collection.
+     *
      * @param mixed $indexedBy
      */
     public function setIndexedBy($indexedBy)
