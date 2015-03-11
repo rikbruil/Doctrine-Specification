@@ -36,6 +36,21 @@ class Join implements SpecificationInterface
     private $dqlAlias;
 
     /**
+     * @var string|null
+     */
+    private $conditionType = null;
+
+    /**
+     * @var string|null
+     */
+    private $condition = null;
+
+    /**
+     * @var string|null
+     */
+    private $indexedBy = null;
+
+    /**
      * @var string
      */
     private $type = self::JOIN;
@@ -85,7 +100,7 @@ class Join implements SpecificationInterface
 
         call_user_func_array(
             [$queryBuilder, $this->type],
-            [$statement, $this->newAlias]
+            [$statement, $this->newAlias, $this->conditionType, $this->condition, $this->indexedBy]
         );
     }
 
@@ -95,5 +110,29 @@ class Join implements SpecificationInterface
     public function isSatisfiedBy($value)
     {
         return true;
+    }
+
+    /**
+     * @param string $conditionType
+     */
+    public function setConditionType($conditionType)
+    {
+        $this->conditionType = $conditionType;
+    }
+
+    /**
+     * @param string $condition
+     */
+    public function setCondition($condition)
+    {
+        $this->condition = $condition;
+    }
+
+    /**
+     * @param mixed $indexedBy
+     */
+    public function setIndexedBy($indexedBy)
+    {
+        $this->indexedBy = $indexedBy;
     }
 }
