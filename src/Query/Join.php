@@ -98,9 +98,14 @@ class Join implements SpecificationInterface
 
         $statement = sprintf('%s.%s', $dqlAlias, $this->field);
 
+        $condition = $this->condition;
+        if ($condition instanceof SpecificationInterface) {
+            $condition = $condition->modify($queryBuilder, $dqlAlias);
+        }
+
         call_user_func_array(
             [$queryBuilder, $this->type],
-            [$statement, $this->newAlias, $this->conditionType, $this->condition, $this->indexedBy]
+            [$statement, $this->newAlias, $this->conditionType, $condition, $this->indexedBy]
         );
     }
 
@@ -116,29 +121,41 @@ class Join implements SpecificationInterface
      * Set the condition type to be used on the join (WITH/ON).
      *
      * @param string $conditionType
+     *
+     * @return $this
      */
     public function setConditionType($conditionType)
     {
         $this->conditionType = $conditionType;
+
+        return $this;
     }
 
     /**
      * Set the condition to be used for the join statement.
      *
-     * @param string $condition
+     * @param string|SpecificationInterface $condition
+     *
+     * @return $this
      */
     public function setCondition($condition)
     {
         $this->condition = $condition;
+
+        return $this;
     }
 
     /**
      * Set the property which will be used as index for the returned collection.
      *
      * @param mixed $indexedBy
+     *
+     * @return $this
      */
     public function setIndexedBy($indexedBy)
     {
         $this->indexedBy = $indexedBy;
+
+        return $this;
     }
 }

@@ -46,8 +46,8 @@ class JoinSpec extends ObjectBehavior
 
         $this->beConstructedWith('user', 'authUser');
 
-        $this->setConditionType($joinType);
-        $this->setCondition($joinCondition);
+        $this->setConditionType($joinType)->shouldReturn($this);
+        $this->setCondition($joinCondition)->shouldReturn($this);
 
         $queryBuilder->join('a.user', 'authUser', $joinType, $joinCondition, null)->shouldBeCalled();
 
@@ -62,8 +62,24 @@ class JoinSpec extends ObjectBehavior
 
         $queryBuilder->join('a.user', 'authUser', null, null, $indexedBy)->shouldBeCalled();
 
-        $this->setIndexedBy($indexedBy);
+        $this->setIndexedBy($indexedBy)->shouldReturn($this);
 
+        $this->modify($queryBuilder, 'a');
+    }
+
+    public function it_should_accept_specifications_as_condition(QueryBuilder $queryBuilder, SpecificationInterface $specification)
+    {
+        $type      = DoctrineJoin::ON;
+        $condition = 'condition';
+
+        $this->beConstructedWith('user', 'authUser');
+
+        $specification->modify($queryBuilder, 'a')->willReturn($condition);
+
+        $queryBuilder->join('a.user', 'authUser', $type, $condition, null)->shouldBeCalled();
+
+        $this->setConditionType($type)->shouldReturn($this);
+        $this->setCondition($specification)->shouldReturn($this);
         $this->modify($queryBuilder, 'a');
     }
 
