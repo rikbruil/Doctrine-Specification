@@ -3,42 +3,18 @@
 namespace Rb\Specification\Doctrine\Condition;
 
 use Doctrine\ORM\QueryBuilder;
-use Rb\Specification\Doctrine\SpecificationInterface;
+use Rb\Specification\Doctrine\AbstractSpecification;
 
-class IsNull implements SpecificationInterface
+class IsNull extends AbstractSpecification
 {
-    /**
-     * @var string
-     */
-    protected $field;
-
-    /**
-     * @var string|null
-     */
-    protected $dqlAlias;
-
-    /**
-     * @param string      $field
-     * @param string|null $dqlAlias
-     */
-    public function __construct($field, $dqlAlias = null)
-    {
-        $this->field    = $field;
-        $this->dqlAlias = $dqlAlias;
-    }
-
     /**
      * {@inheritDoc}
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
-        if (! empty($this->dqlAlias)) {
-            $dqlAlias = $this->dqlAlias;
-        }
-
-        $property = sprintf('%s.%s', $dqlAlias, $this->field);
-
-        return (string) $queryBuilder->expr()->isNull($property);
+        return (string) $queryBuilder->expr()->isNull(
+            $this->createPropertyWithAlias($dqlAlias)
+        );
     }
 
     /**

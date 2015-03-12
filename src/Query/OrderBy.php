@@ -3,13 +3,13 @@
 namespace Rb\Specification\Doctrine\Query;
 
 use Doctrine\ORM\QueryBuilder;
+use Rb\Specification\Doctrine\AbstractSpecification;
 use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
-use Rb\Specification\Doctrine\SpecificationInterface;
 
 /**
  * Class OrderBy.
  */
-class OrderBy implements SpecificationInterface
+class OrderBy extends AbstractSpecification
 {
     const ASC  = 'ASC';
     const DESC = 'DESC';
@@ -54,12 +54,10 @@ class OrderBy implements SpecificationInterface
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
-        if (! is_null($this->dqlAlias)) {
-            $dqlAlias = $this->dqlAlias;
-        }
-
-        $orderBy = sprintf('%s.%s', $dqlAlias, $this->field);
-        $queryBuilder->addOrderBy($orderBy, $this->order);
+        $queryBuilder->addOrderBy(
+            $this->createPropertyWithAlias($dqlAlias),
+            $this->order
+        );
     }
 
     /**

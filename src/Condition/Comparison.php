@@ -4,10 +4,10 @@ namespace Rb\Specification\Doctrine\Condition;
 
 use Doctrine\ORM\Query\Expr\Comparison as DoctrineComparison;
 use Doctrine\ORM\QueryBuilder;
+use Rb\Specification\Doctrine\AbstractSpecification;
 use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
-use Rb\Specification\Doctrine\SpecificationInterface;
 
-class Comparison implements SpecificationInterface
+class Comparison extends AbstractSpecification
 {
     const EQ   = '=';
     const NEQ  = '<>';
@@ -21,11 +21,6 @@ class Comparison implements SpecificationInterface
      * @var string[]
      */
     protected static $operators = [self::EQ, self::NEQ, self::LT, self::LTE, self::GT, self::GTE, self::LIKE];
-
-    /**
-     * @var string
-     */
-    protected $field;
 
     /**
      * @var string
@@ -63,9 +58,9 @@ class Comparison implements SpecificationInterface
         }
 
         $this->operator = $operator;
-        $this->field    = $field;
         $this->value    = $value;
-        $this->dqlAlias = $dqlAlias;
+
+        parent::__construct($field, $dqlAlias);
     }
 
     /**
@@ -86,7 +81,7 @@ class Comparison implements SpecificationInterface
         $queryBuilder->setParameter($paramName, $this->value);
 
         return (string) new DoctrineComparison(
-            sprintf('%s.%s', $dqlAlias, $this->field),
+            $this->createPropertyWithAlias($dqlAlias),
             $this->operator,
             sprintf(':%s', $paramName)
         );
