@@ -3,7 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/rikbruil/Doctrine-Specification/badge.svg?branch=master)](https://coveralls.io/r/rikbruil/Doctrine-Specification?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/rikbruil/doctrine-specification/v/stable.svg)](https://packagist.org/packages/rikbruil/doctrine-specification)
 [![License](https://poser.pugx.org/rikbruil/doctrine-specification/license.svg)](https://packagist.org/packages/rikbruil/doctrine-specification)
-[![Dependency Status](https://www.versioneye.com/user/projects/54fb8bb74f31084fdc000705/badge.svg?style=flat)](https://www.versioneye.com/user/projects/54fb8bb74f31084fdc000705)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/rikbruil/Doctrine-Specification/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/rikbruil/Doctrine-Specification/?branch=master)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/bb221821-1ba6-4613-b39f-f43718aaa92d/mini.png)](https://insight.sensiolabs.com/projects/bb221821-1ba6-4613-b39f-f43718aaa92d)
 
 Doctrine [Specification pattern][specification_pattern] for building queries dynamically and with re-usable classes for composition.
