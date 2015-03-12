@@ -17,7 +17,7 @@ class Specification extends ArrayCollection implements SpecificationInterface
      */
     public function __construct(array $elements = [])
     {
-        array_map([$this, 'add'], $elements);
+        $this->setChildren($elements);
     }
 
     /**
@@ -67,11 +67,26 @@ class Specification extends ArrayCollection implements SpecificationInterface
     {
         /** @var SpecificationInterface $child */
         foreach ($this as $child) {
-            if (! $child->isSatisfiedBy($value)) {
-                return false;
+            if ($child->isSatisfiedBy($value)) {
+                continue;
             }
+
+            return false;
         }
 
         return true;
+    }
+
+    /**
+     * @param SpecificationInterface[] $children
+     *
+     * @return $this
+     */
+    protected function setChildren(array $children)
+    {
+        $this->clear();
+        array_map([$this, 'add'], $children);
+
+        return $this;
     }
 }

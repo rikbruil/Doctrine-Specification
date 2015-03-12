@@ -59,12 +59,4 @@ class OrderBy extends AbstractSpecification
             $this->order
         );
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function isSatisfiedBy($value)
-    {
-        return true;
-    }
 }

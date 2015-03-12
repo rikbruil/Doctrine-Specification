@@ -98,14 +98,6 @@ class Join extends AbstractSpecification
     }
 
     /**
-     * {@inheritDoc}
-     */
-    public function isSatisfiedBy($value)
-    {
-        return true;
-    }
-
-    /**
      * Set the condition type to be used on the join (WITH/ON).
      *
      * @param string $conditionType

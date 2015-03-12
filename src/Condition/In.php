@@ -4,7 +4,6 @@ namespace Rb\Specification\Doctrine\Condition;
 
 use Doctrine\ORM\QueryBuilder;
 use Rb\Specification\Doctrine\AbstractSpecification;
-use Rb\Specification\Doctrine\SpecificationInterface;
 
 class In extends AbstractSpecification
 {
@@ -47,13 +46,5 @@ class In extends AbstractSpecification
     private function generateParameterName(QueryBuilder $queryBuilder)
     {
         return sprintf('in_%d', count($queryBuilder->getParameters()));
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function isSatisfiedBy($value)
-    {
-        return true;
     }
 }

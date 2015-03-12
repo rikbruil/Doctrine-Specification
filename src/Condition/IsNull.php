@@ -16,12 +16,4 @@ class IsNull extends AbstractSpecification
             $this->createPropertyWithAlias($dqlAlias)
         );
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function isSatisfiedBy($value)
-    {
-        return true;
-    }
 }

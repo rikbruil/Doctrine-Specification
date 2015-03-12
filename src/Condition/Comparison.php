@@ -98,12 +98,4 @@ class Comparison extends AbstractSpecification
     {
         return sprintf('comparison_%d', count($queryBuilder->getParameters()));
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function isSatisfiedBy($value)
-    {
-        return true;
-    }
 }
