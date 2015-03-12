@@ -3,13 +3,14 @@
 namespace Rb\Specification\Doctrine\Query;
 
 use Doctrine\ORM\QueryBuilder;
+use Rb\Specification\Doctrine\AbstractSpecification;
 use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 use Rb\Specification\Doctrine\SpecificationInterface;
 
 /**
  * Class Join.
  */
-class Join implements SpecificationInterface
+class Join extends AbstractSpecification
 {
     const JOIN       = 'join';
     const LEFT_JOIN  = 'leftJoin';
@@ -20,17 +21,7 @@ class Join implements SpecificationInterface
     /**
      * @var string
      */
-    private $field;
-
-    /**
-     * @var string
-     */
     private $newAlias;
-
-    /**
-     * @var string|null
-     */
-    private $dqlAlias;
 
     /**
      * @var string|null
@@ -61,9 +52,9 @@ class Join implements SpecificationInterface
      */
     public function __construct($field, $newAlias, $dqlAlias = null)
     {
-        $this->field    = $field;
         $this->newAlias = $newAlias;
-        $this->dqlAlias = $dqlAlias;
+
+        parent::__construct($field, $dqlAlias);
     }
 
     /**
@@ -93,7 +84,7 @@ class Join implements SpecificationInterface
             $dqlAlias = $this->dqlAlias;
         }
 
-        $statement = sprintf('%s.%s', $dqlAlias, $this->field);
+        $property = $this->createPropertyWithAlias($dqlAlias);
 
         $condition = $this->condition;
         if ($condition instanceof SpecificationInterface) {
@@ -102,7 +93,7 @@ class Join implements SpecificationInterface
 
         call_user_func_array(
             [$queryBuilder, $this->type],
-            [$statement, $this->newAlias, $this->conditionType, $condition, $this->indexedBy]
+            [$property, $this->newAlias, $this->conditionType, $condition, $this->indexedBy]
         );
     }
 
