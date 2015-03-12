@@ -14,9 +14,6 @@ class Composite extends Specification
     const AND_X = 'andX';
     const OR_X  = 'orX';
 
-    /**
-     * @var string[]
-     */
     protected static $types = [self::OR_X, self::AND_X];
 
     /**
