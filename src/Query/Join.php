@@ -15,9 +15,6 @@ class Join implements SpecificationInterface
     const LEFT_JOIN  = 'leftJoin';
     const INNER_JOIN = 'innerJoin';
 
-    /*
-     * @var string[]
-     */
     static protected $types = [self::JOIN, self::LEFT_JOIN, self::INNER_JOIN];
 
     /**
@@ -41,7 +38,7 @@ class Join implements SpecificationInterface
     private $conditionType = null;
 
     /**
-     * @var string|null
+     * @var string|SpecificationInterface|null
      */
     private $condition = null;
 

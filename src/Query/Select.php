@@ -11,7 +11,7 @@ use Rb\Specification\Doctrine\SpecificationInterface;
 class Select implements SpecificationInterface
 {
     /**
-     * @var string
+     * @var string|array
      */
     protected $select;
 

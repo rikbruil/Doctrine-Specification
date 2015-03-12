@@ -32,7 +32,7 @@ class IsNull implements SpecificationInterface
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
-        if ($this->dqlAlias) {
+        if (! empty($this->dqlAlias)) {
             $dqlAlias = $this->dqlAlias;
         }
 
