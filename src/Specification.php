@@ -12,6 +12,16 @@ use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
  */
 class Specification extends ArrayCollection implements SpecificationInterface
 {
+    const AND_X = 'andX';
+    const OR_X  = 'orX';
+
+    protected static $types = [self::OR_X, self::AND_X];
+
+    /**
+     * @var string
+     */
+    private $type = self::AND_X;
+
     /**
      * @param SpecificationInterface[] $elements
      */
@@ -55,7 +65,7 @@ class Specification extends ArrayCollection implements SpecificationInterface
         }
 
         return call_user_func_array(
-            [$queryBuilder->expr(), 'andX'],
+            [$queryBuilder->expr(), $this->type],
             $result
         );
     }
@@ -86,6 +96,27 @@ class Specification extends ArrayCollection implements SpecificationInterface
     {
         $this->clear();
         array_map([$this, 'add'], $children);
+
+        return $this;
+    }
+
+    /**
+     * Set the type of comparison.
+     *
+     * @param string $type
+     *
+     * @throws InvalidArgumentException
+     *
+     * @return $this
+     */
+    protected function setType($type)
+    {
+        if (! in_array($type, self::$types, true)) {
+            $message = sprintf('"%s" is not a valid type! Valid types: %s', $type, implode(', ', self::$types));
+            throw new InvalidArgumentException($message);
+        }
+
+        $this->type = $type;
 
         return $this;
     }
