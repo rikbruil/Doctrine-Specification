@@ -22,7 +22,7 @@ class NotIn extends In
      *
      * @return string
      */
-    protected function generateParameterName(QueryBuilder $queryBuilder)
+    private function generateParameterName(QueryBuilder $queryBuilder)
     {
         return sprintf('not_in_%d', count($queryBuilder->getParameters()));
     }
