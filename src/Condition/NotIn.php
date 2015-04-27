@@ -16,4 +16,14 @@ class NotIn extends In
             sprintf(':%s', $paramName)
         );
     }
+
+    /**
+     * @param QueryBuilder $queryBuilder
+     *
+     * @return string
+     */
+    protected function generateParameterName(QueryBuilder $queryBuilder)
+    {
+        return sprintf('not_in_%d', count($queryBuilder->getParameters()));
+    }
 }
