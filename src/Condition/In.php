@@ -43,7 +43,7 @@ class In extends AbstractSpecification
      *
      * @return string
      */
-    protected function generateParameterName(QueryBuilder $queryBuilder)
+    private function generateParameterName(QueryBuilder $queryBuilder)
     {
         return sprintf('in_%d', count($queryBuilder->getParameters()));
     }
