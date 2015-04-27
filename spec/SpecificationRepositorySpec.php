@@ -89,13 +89,13 @@ class SpecificationRepositorySpec extends ObjectBehavior
         $entityManager->createQueryBuilder()->willReturn($queryBuilder);
 
         $queryBuilder->select($this->dqlAlias)->willReturn($queryBuilder);
-        $queryBuilder->from(Argument::any(), $this->dqlAlias)->willReturn($queryBuilder);
+        $queryBuilder->from(Argument::any(), $this->dqlAlias, Argument::any())->willReturn($queryBuilder);
         $queryBuilder->where(Argument::any())->shouldNotBeCalled();
         $queryBuilder->getQuery()->willReturn($query);
 
-        $specification->modify($queryBuilder, $this->dqlAlias)->shouldBeCalled();
+        $specification->modify($queryBuilder, $this->dqlAlias, Argument::any())->shouldBeCalled();
         $specification->isSatisfiedBy(Argument::any())->willReturn(true);
-        $specification->modify($queryBuilder, $this->dqlAlias)->willReturn('');
+        $specification->modify($queryBuilder, $this->dqlAlias, Argument::any())->willReturn('');
 
         $this->match($specification);
     }
@@ -119,7 +119,7 @@ class SpecificationRepositorySpec extends ObjectBehavior
         $specification->modify($queryBuilder, $this->dqlAlias)->willReturn($this->expression);
 
         $queryBuilder->select($this->dqlAlias)->willreturn($queryBuilder);
-        $queryBuilder->from(Argument::any(), $this->dqlAlias)->willReturn($queryBuilder);
+        $queryBuilder->from(Argument::any(), $this->dqlAlias, Argument::any())->willReturn($queryBuilder);
         $queryBuilder->where($this->expression)->willReturn($queryBuilder);
 
         $queryBuilder->getQuery()->willReturn($query);
