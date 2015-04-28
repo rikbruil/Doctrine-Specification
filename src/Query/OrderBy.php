@@ -14,7 +14,7 @@ class OrderBy extends AbstractSpecification
     const ASC  = 'ASC';
     const DESC = 'DESC';
 
-    static private $validOrder = [self::ASC, self::DESC];
+    private static $validOrder = [self::ASC, self::DESC];
 
     /**
      * @var string
@@ -40,7 +40,7 @@ class OrderBy extends AbstractSpecification
      */
     public function __construct($field, $order = self::ASC, $dqlAlias = null)
     {
-        if (! in_array($order, self::$validOrder, true)) {
+        if (!in_array($order, self::$validOrder, true)) {
             throw new InvalidArgumentException();
         }
 

@@ -39,7 +39,7 @@ class Specification extends ArrayCollection implements SpecificationInterface
      */
     public function add($value)
     {
-        if (! $value instanceof SpecificationInterface) {
+        if (!$value instanceof SpecificationInterface) {
             throw new InvalidArgumentException(sprintf(
                 '"%s" does not implement "%s"!',
                 (is_object($value)) ? get_class($value) : $value,
@@ -111,7 +111,7 @@ class Specification extends ArrayCollection implements SpecificationInterface
      */
     protected function setType($type)
     {
-        if (! in_array($type, self::$types, true)) {
+        if (!in_array($type, self::$types, true)) {
             $message = sprintf('"%s" is not a valid type! Valid types: %s', $type, implode(', ', self::$types));
             throw new InvalidArgumentException($message);
         }

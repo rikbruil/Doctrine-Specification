@@ -33,7 +33,7 @@ abstract class AbstractSpecification implements SpecificationInterface
      */
     protected function createPropertyWithAlias($dqlAlias)
     {
-        if (! empty($this->dqlAlias)) {
+        if (!empty($this->dqlAlias)) {
             $dqlAlias = $this->dqlAlias;
         }
 
