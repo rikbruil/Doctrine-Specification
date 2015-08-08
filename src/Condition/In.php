@@ -19,7 +19,7 @@ class In extends AbstractSpecification
      */
     public function __construct($field, $value, $dqlAlias = null)
     {
-        $this->value    = $value;
+        $this->value = $value;
 
         parent::__construct($field, $dqlAlias);
     }

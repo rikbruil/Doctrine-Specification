@@ -19,9 +19,9 @@ class IsInstanceOf extends AbstractSpecification
      */
     public function __construct($field, $className, $dqlAlias = null)
     {
-        parent::__construct($field, $dqlAlias);
-
         $this->className = $className;
+
+        parent::__construct($field, $dqlAlias);
     }
 
     /**
@@ -29,8 +29,9 @@ class IsInstanceOf extends AbstractSpecification
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
-        $expr = $queryBuilder->expr();
-
-        return (string) $expr->isInstanceOf($this->createPropertyWithAlias($dqlAlias), $this->className);
+        return (string) $queryBuilder->expr()->isInstanceOf(
+            $this->createPropertyWithAlias($dqlAlias),
+            $this->className
+        );
     }
 }

@@ -19,17 +19,7 @@ class OrderBy extends AbstractSpecification
     /**
      * @var string
      */
-    protected $field;
-
-    /**
-     * @var string
-     */
     protected $order;
-
-    /**
-     * @var null|string
-     */
-    protected $dqlAlias;
 
     /**
      * @param string      $field
@@ -44,9 +34,9 @@ class OrderBy extends AbstractSpecification
             throw new InvalidArgumentException();
         }
 
-        $this->field    = $field;
-        $this->order    = $order;
-        $this->dqlAlias = $dqlAlias;
+        $this->order = $order;
+
+        parent::__construct($field, $dqlAlias);
     }
 
     /**
