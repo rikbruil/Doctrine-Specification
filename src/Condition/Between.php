@@ -3,15 +3,10 @@
 namespace Rb\Specification\Doctrine\Condition;
 
 use Doctrine\ORM\QueryBuilder;
-use Rb\Specification\Doctrine\SpecificationInterface;
+use Rb\Specification\Doctrine\AbstractSpecification;
 
-class Between implements SpecificationInterface
+class Between extends AbstractSpecification
 {
-    /**
-     * @var string
-     */
-    protected $field;
-
     /**
      * @var mixed
      */
@@ -23,11 +18,6 @@ class Between implements SpecificationInterface
     protected $to;
 
     /**
-     * @var null|string
-     */
-    protected $dqlAlias;
-
-    /**
      * @param string      $field
      * @param mixed       $from
      * @param mixed       $to
@@ -35,18 +25,10 @@ class Between implements SpecificationInterface
      */
     public function __construct($field, $from, $to, $dqlAlias = null)
     {
-        $this->field    = $field;
-        $this->from     = $from;
-        $this->to       = $to;
-        $this->dqlAlias = $dqlAlias;
-    }
+        $this->from = $from;
+        $this->to   = $to;
 
-    /**
-     * {@inheritDoc}
-     */
-    public function isSatisfiedBy($value)
-    {
-        return true;
+        parent::__construct($field, $dqlAlias);
     }
 
     /**
@@ -54,10 +36,6 @@ class Between implements SpecificationInterface
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
-        if (!empty($this->dqlAlias)) {
-            $dqlAlias = $this->dqlAlias;
-        }
-
         $fromParam = $this->generateParameterName('from', $queryBuilder);
         $toParam   = $this->generateParameterName('to', $queryBuilder);
 
@@ -65,7 +43,7 @@ class Between implements SpecificationInterface
         $queryBuilder->setParameter($toParam, $this->to);
 
         return (string) $queryBuilder->expr()->between(
-            sprintf('%s.%s', $dqlAlias, $this->field),
+            $this->createPropertyWithAlias($dqlAlias),
             sprintf(':%s', $fromParam),
             sprintf(':%s', $toParam)
         );

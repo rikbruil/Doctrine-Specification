@@ -28,11 +28,6 @@ class Comparison extends AbstractSpecification
     protected $value;
 
     /**
-     * @var string|null
-     */
-    protected $dqlAlias;
-
-    /**
      * @var string
      */
     private $operator;
@@ -73,11 +68,7 @@ class Comparison extends AbstractSpecification
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
-        if (!empty($this->dqlAlias)) {
-            $dqlAlias = $this->dqlAlias;
-        }
-
-        $paramName = $this->generateName($queryBuilder);
+        $paramName = $this->generateParameterName($queryBuilder);
         $queryBuilder->setParameter($paramName, $this->value);
 
         return (string) new DoctrineComparison(
@@ -94,7 +85,7 @@ class Comparison extends AbstractSpecification
      *
      * @return string
      */
-    protected function generateName(QueryBuilder $queryBuilder)
+    protected function generateParameterName(QueryBuilder $queryBuilder)
     {
         return sprintf('comparison_%d', count($queryBuilder->getParameters()));
     }

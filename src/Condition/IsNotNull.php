@@ -11,12 +11,8 @@ class IsNotNull extends IsNull
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
-        if (!empty($this->dqlAlias)) {
-            $dqlAlias = $this->dqlAlias;
-        }
-
-        $property = sprintf('%s.%s', $dqlAlias, $this->field);
-
-        return (string) $queryBuilder->expr()->isNotNull($property);
+        return (string) $queryBuilder->expr()->isNotNull(
+            $this->createPropertyWithAlias($dqlAlias)
+        );
     }
 }
