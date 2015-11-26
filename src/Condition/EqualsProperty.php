@@ -15,7 +15,7 @@ class EqualsProperty extends Comparison
      *
      * @throws InvalidArgumentException
      */
-    public function __construct($field, $field2, $dqlAlias)
+    public function __construct($field, $field2, $dqlAlias = null)
     {
         parent::__construct(self::EQ, $field, $field2, $dqlAlias);
     }
