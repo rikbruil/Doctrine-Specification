@@ -40,7 +40,7 @@ class Not implements SpecificationInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function isSatisfiedBy($value)
     {

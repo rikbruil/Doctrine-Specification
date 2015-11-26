@@ -30,7 +30,7 @@ class Comparison extends AbstractSpecification
     /**
      * @var string
      */
-    private $operator;
+    protected $operator;
 
     /**
      * @param string      $operator

@@ -76,7 +76,7 @@ class Join extends AbstractSpecification
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {

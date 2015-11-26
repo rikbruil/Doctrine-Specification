@@ -51,7 +51,7 @@ class Specification extends ArrayCollection implements SpecificationInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
@@ -71,7 +71,7 @@ class Specification extends ArrayCollection implements SpecificationInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function isSatisfiedBy($value)
     {

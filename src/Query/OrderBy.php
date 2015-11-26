@@ -30,7 +30,7 @@ class OrderBy extends AbstractSpecification
      */
     public function __construct($field, $order = null, $dqlAlias = null)
     {
-        $order = ! $order ? self::ASC : strtoupper($order);
+        $order = !$order ? self::ASC : strtoupper($order);
 
         if (!in_array($order, self::$validOrder, true)) {
             throw new InvalidArgumentException();
@@ -42,7 +42,7 @@ class OrderBy extends AbstractSpecification
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {

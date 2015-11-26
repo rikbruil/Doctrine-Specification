@@ -33,15 +33,32 @@ abstract class AbstractSpecification implements SpecificationInterface
      */
     protected function createPropertyWithAlias($dqlAlias)
     {
+        return $this->createAliasedName($this->field, $dqlAlias);
+    }
+
+    /**
+     * Create a formatted string where the value will be prefixed with DQL alias (if not already present).
+     *
+     * @param string $value
+     * @param string $dqlAlias
+     *
+     * @return string
+     */
+    protected function createAliasedName($value, $dqlAlias)
+    {
+        if (strpos($value, '.') !== false) {
+            return $value;
+        }
+
         if (!empty($this->dqlAlias)) {
             $dqlAlias = $this->dqlAlias;
         }
 
-        return sprintf('%s.%s', $dqlAlias, $this->field);
+        return sprintf('%s.%s', $dqlAlias, $value);
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function isSatisfiedBy($value)
     {

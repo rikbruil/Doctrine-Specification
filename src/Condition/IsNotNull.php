@@ -7,7 +7,7 @@ use Doctrine\ORM\QueryBuilder;
 class IsNotNull extends IsNull
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {

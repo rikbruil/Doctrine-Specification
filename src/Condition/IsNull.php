@@ -8,7 +8,7 @@ use Rb\Specification\Doctrine\AbstractSpecification;
 class IsNull extends AbstractSpecification
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {

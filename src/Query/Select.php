@@ -24,7 +24,7 @@ class Select implements SpecificationInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
@@ -32,7 +32,7 @@ class Select implements SpecificationInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function isSatisfiedBy($value)
     {

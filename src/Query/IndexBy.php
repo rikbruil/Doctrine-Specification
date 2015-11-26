@@ -11,7 +11,7 @@ use Rb\Specification\Doctrine\AbstractSpecification;
 class IndexBy extends AbstractSpecification
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
