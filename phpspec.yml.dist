@@ -1,13 +1,11 @@
 extensions:
-  - PhpSpec\Extension\CodeCoverageExtension
-
-code_coverage:
-    format:
-        - clover
-        - html
-    output:
-        html: build/logs/html
-        clover: build/logs/clover.xml
+    PhpSpecCodeCoverage\CodeCoverageExtension:
+        format:
+            - clover
+            - html
+        output:
+            html: build/logs/html
+            clover: build/logs/clover.xml
 
 suites:
     main:
