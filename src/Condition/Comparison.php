@@ -42,7 +42,7 @@ class Comparison extends AbstractSpecification
      */
     public function __construct($operator, $field, $value, $dqlAlias = null)
     {
-        if (!in_array($operator, self::$operators, true)) {
+        if (! in_array($operator, self::$operators, true)) {
             throw new InvalidArgumentException(
                 sprintf(
                     '"%s" is not a valid operator. Valid operators: %s',

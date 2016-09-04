@@ -64,7 +64,7 @@ class Join extends AbstractSpecification
      */
     public function setType($type)
     {
-        if (!in_array($type, self::$types, true)) {
+        if (! in_array($type, self::$types, true)) {
             throw new InvalidArgumentException(sprintf(
                 '"%s" is not a valid type! Valid types: %s',
                 $type,
@@ -80,7 +80,7 @@ class Join extends AbstractSpecification
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
-        if (!is_null($this->dqlAlias)) {
+        if (! is_null($this->dqlAlias)) {
             $dqlAlias = $this->dqlAlias;
         }
 

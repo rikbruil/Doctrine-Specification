@@ -6,7 +6,6 @@ use Doctrine\ORM\QueryBuilder;
 use Rb\Specification\Doctrine\AbstractSpecification;
 use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 
-
 /**
  * @author  Kyle Tucker <kyleatucker@gmail.com>
  */
@@ -15,18 +14,18 @@ class GroupBy extends AbstractSpecification
     const GROUP_BY     = 'groupBy';
     const ADD_GROUP_BY = 'addGroupBy';
 
-    /** @var  string[]  */
+    /** @var string[] */
     protected static $types = [self::GROUP_BY, self::ADD_GROUP_BY];
 
-    /** @var  string */
+    /** @var string */
     protected $type;
 
     /**
      * Constructor.
      *
-     * @param  string       $field
-     * @param  string       $type
-     * @param  string|null  $dqlAlias
+     * @param string      $field
+     * @param string      $type
+     * @param string|null $dqlAlias
      */
     public function __construct($field, $type = self::ADD_GROUP_BY, $dqlAlias = null)
     {
@@ -48,13 +47,13 @@ class GroupBy extends AbstractSpecification
     }
 
     /**
-     * @param  string  $type
+     * @param string $type
      *
-     * @throws  InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function setType($type)
     {
-        if (!in_array($type, self::$types)) {
+        if (! in_array($type, self::$types, true)) {
             throw new InvalidArgumentException(sprintf(
                 '"%s" is not a valid type! Valid types: %s',
                 $type,

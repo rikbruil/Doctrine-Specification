@@ -30,7 +30,7 @@ class ModifierCollection extends ArrayCollection implements ModifierInterface
      */
     public function add($value)
     {
-        if (!$value instanceof ModifierInterface) {
+        if (! $value instanceof ModifierInterface) {
             throw new InvalidArgumentException(sprintf(
                 '"%s" does not implement "%s"!',
                 (is_object($value)) ? get_class($value) : $value,

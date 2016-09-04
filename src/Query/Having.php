@@ -6,7 +6,6 @@ use Doctrine\ORM\QueryBuilder;
 use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 use Rb\Specification\Doctrine\SpecificationInterface;
 
-
 /**
  * @author  Kyle Tucker <kyleatucker@gmail.com>
  */
@@ -18,10 +17,10 @@ class Having implements SpecificationInterface
 
     protected static $types = [self::HAVING, self::AND_HAVING, self::OR_HAVING];
 
-    /** @var  string */
+    /** @var string */
     protected $type;
 
-    /** @var  SpecificationInterface */
+    /** @var SpecificationInterface */
     protected $specification;
 
     public function __construct(SpecificationInterface $specification, $type = self::AND_HAVING)
@@ -47,7 +46,7 @@ class Having implements SpecificationInterface
 
     public function setType($type)
     {
-        if (!in_array($type, self::$types)) {
+        if (! in_array($type, self::$types, true)) {
             throw new InvalidArgumentException(sprintf(
                 '"%s" is not a valid type! Valid types: %s',
                 $type,

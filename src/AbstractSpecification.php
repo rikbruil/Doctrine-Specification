@@ -50,7 +50,7 @@ abstract class AbstractSpecification implements SpecificationInterface
             return $value;
         }
 
-        if (!empty($this->dqlAlias)) {
+        if (! empty($this->dqlAlias)) {
             $dqlAlias = $this->dqlAlias;
         }
 

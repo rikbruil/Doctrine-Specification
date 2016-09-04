@@ -13,7 +13,7 @@ class SelectSpec extends ObjectBehavior
     {
         $alias  = 'a';
         $entity = 'foo';
-        $type = Select::ADD_SELECT;
+        $type   = Select::ADD_SELECT;
         $this->beConstructedWith($entity, $type);
 
         $queryBuilder->addSelect($entity)->shouldBeCalled();
@@ -26,7 +26,7 @@ class SelectSpec extends ObjectBehavior
     {
         $alias  = 'a';
         $entity = 'foo';
-        $type = Select::SELECT;
+        $type   = Select::SELECT;
         $this->beConstructedWith($entity, $type);
 
         $queryBuilder->select($entity)->shouldBeCalled();
@@ -39,7 +39,7 @@ class SelectSpec extends ObjectBehavior
     {
         $entity = 'foo';
         $this->beConstructedWith($entity);
-        
+
         $this->setType(Select::ADD_SELECT);
 
         $this->shouldThrow(InvalidArgumentException::class)

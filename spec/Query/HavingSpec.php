@@ -8,7 +8,6 @@ use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
 use Rb\Specification\Doctrine\Query\Having;
 use Rb\Specification\Doctrine\SpecificationInterface;
 
-
 /**
  * @author  Kyle Tucker <kyleatucker@gmail.com>
  */
