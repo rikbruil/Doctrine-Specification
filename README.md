@@ -41,7 +41,7 @@ return $qb->where('r.ended = 0')
 ```php
 use Rb\Specification\Doctrine\Condition\Equals;
 use Rb\Specification\Doctrine\Condition\IsNull;
-use Rb\Specification\Doctrine\Condition\LowerThan;
+use Rb\Specification\Doctrine\Condition\LessThan;
 use Rb\Specification\Doctrine\Logic\AndX;
 use Rb\Specification\Doctrine\Logic\OrX;
 use Rb\Specification\Doctrine\Specification;
@@ -53,7 +53,7 @@ $spec = new Specification([
         new LowerThan('endDate', new \DateTime()),
         new AndX(
             new IsNull('endDate'),
-            new LowerThan('startDate', new \DateTime('-4weeks'))
+            new LessThan('startDate', new \DateTime('-4weeks'))
         )
     )
 ]);
