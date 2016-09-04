@@ -4,6 +4,7 @@ namespace Rb\Specification\Doctrine;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 use Rb\Specification\Doctrine\Exception\LogicException;
 use Rb\Specification\Doctrine\Result\ModifierInterface;
 
@@ -21,13 +22,13 @@ class SpecificationRepository extends EntityRepository
      * Get the query after matching with given specification.
      *
      * @param SpecificationInterface $specification
-     * @param ModifierInterface      $resultModifier
+     * @param ModifierInterface      $modifier
      *
      * @throws LogicException
      *
      * @return Query
      */
-    public function match(SpecificationInterface $specification, ModifierInterface $resultModifier = null)
+    public function match(SpecificationInterface $specification, ModifierInterface $modifier = null)
     {
         if (! $specification->isSatisfiedBy($this->getEntityName())) {
             throw new LogicException(sprintf(
@@ -36,17 +37,46 @@ class SpecificationRepository extends EntityRepository
             ));
         }
 
-        $dqlAlias     = $this->dqlAlias;
-        $queryBuilder = $this->createQueryBuilder($dqlAlias);
-        $condition    = $specification->modify($queryBuilder, $dqlAlias);
+        $queryBuilder = $this->createQueryBuilder($this->dqlAlias);
+        $this->modifyQueryBuilder($queryBuilder, $specification);
 
-        if (! empty($condition)) {
-            $queryBuilder->where($condition);
+        return $this->modifyQuery($queryBuilder, $modifier);
+    }
+
+    /**
+     * Modifies the QueryBuilder according to the passed Specification.
+     * Will also set the condition for this query if needed.
+     *
+     * @param QueryBuilder           $queryBuilder
+     * @param SpecificationInterface $specification
+     *
+     * @internal param string $dqlAlias
+     */
+    private function modifyQueryBuilder(QueryBuilder $queryBuilder, SpecificationInterface $specification)
+    {
+        $condition = $specification->modify($queryBuilder, $this->dqlAlias);
+
+        if (empty($condition)) {
+            return;
         }
 
+        $queryBuilder->where($condition);
+    }
+
+    /**
+     * Modifies and returns a Query object according to the (optional) result modifier.
+     *
+     * @param QueryBuilder           $queryBuilder
+     * @param ModifierInterface|null $modifier
+     *
+     * @return Query
+     */
+    private function modifyQuery(QueryBuilder $queryBuilder, ModifierInterface $modifier = null)
+    {
         $query = $queryBuilder->getQuery();
-        if ($resultModifier) {
-            $resultModifier->modify($query);
+
+        if ($modifier) {
+            $modifier->modify($query);
         }
 
         return $query;
