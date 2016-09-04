@@ -19,6 +19,7 @@ Install the latest version with `composer require rikbruil/doctrine-specificatio
 
 ```php
 // Not using the lib
+// Note: Advertisement repository is an instance of the Doctrine default repository class
 $qb = $this->em->getRepository('Advertisement')
     ->createQueryBuilder('r');
 
@@ -50,7 +51,7 @@ use Rb\Specification\Doctrine\Specification;
 $spec = new Specification([
     new Equals('ended', 0),
     new OrX(
-        new LowerThan('endDate', new \DateTime()),
+        new LessThan('endDate', new \DateTime()),
         new AndX(
             new IsNull('endDate'),
             new LessThan('startDate', new \DateTime('-4weeks'))
@@ -58,6 +59,7 @@ $spec = new Specification([
     )
 ]);
 
+// Note: Advertisement repository is an instance of the SpecificationRepository class
 return $this->em->getRepository('Advertisement')->match($spec)->execute();
 ```
 
@@ -75,10 +77,10 @@ class ExpiredAds extends Specification
         $specs = [
             new Equals('ended', 0),
             new OrX(
-                new LowerThan('endDate', new \DateTime()),
+                new LessThan('endDate', new \DateTime()),
                 new AndX(
                     new IsNull('endDate'),
-                    new LowerThan('startDate', new \DateTime('-4weeks'))
+                    new LessThan('startDate', new \DateTime('-4weeks'))
                 )
             )
         ];
