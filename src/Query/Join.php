@@ -60,6 +60,8 @@ class Join extends AbstractSpecification
     /**
      * @param string $type
      *
+     * @return $this
+     *
      * @throws InvalidArgumentException
      */
     public function setType($type)
@@ -73,6 +75,8 @@ class Join extends AbstractSpecification
         }
 
         $this->type = $type;
+        
+        return $this;
     }
 
     /**
