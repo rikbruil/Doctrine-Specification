@@ -2,31 +2,29 @@
 
 namespace Rb\Specification\Doctrine;
 
-use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Rb\Specification\Doctrine\Exception\LogicException;
 use Rb\Specification\Doctrine\Result\ModifierInterface;
 
 /**
- * Class SpecificationRepository.
+ * Class SpecificationRepositoryTrait.
  */
-class SpecificationRepository extends EntityRepository
+trait SpecificationRepositoryTrait
 {
     /**
      * @var string
      */
-    private $dqlAlias = 'e';
+    protected $dqlAlias = 'e';
 
     /**
-     * Get the query after matching with given specification.
+     * @see SpecificationAware::match()
      *
      * @param SpecificationInterface $specification
-     * @param ModifierInterface      $modifier
-     *
-     * @throws LogicException
+     * @param ModifierInterface|null $modifier
      *
      * @return Query
+     * @throws LogicException
      */
     public function match(SpecificationInterface $specification, ModifierInterface $modifier = null)
     {
