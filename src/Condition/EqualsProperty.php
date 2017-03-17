@@ -28,7 +28,7 @@ class EqualsProperty extends Comparison
         return (string) new DoctrineComparison(
             $this->createPropertyWithAlias($dqlAlias),
             $this->operator,
-            $this->createAliasedName($this->value, $dqlAlias)
+            $this->createAliasedName($this->getValue(), $dqlAlias)
         );
     }
 }

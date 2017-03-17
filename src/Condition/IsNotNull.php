@@ -3,8 +3,9 @@
 namespace Rb\Specification\Doctrine\Condition;
 
 use Doctrine\ORM\QueryBuilder;
+use Rb\Specification\Doctrine\AbstractSpecification;
 
-class IsNotNull extends IsNull
+class IsNotNull extends AbstractSpecification
 {
     /**
      * {@inheritdoc}

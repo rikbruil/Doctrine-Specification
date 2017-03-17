@@ -6,7 +6,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
 use PhpSpec\ObjectBehavior;
-use Rb\Specification\Doctrine\Condition\In;
 use Rb\Specification\Doctrine\SpecificationInterface;
 
 class NotInSpec extends ObjectBehavior
@@ -23,7 +22,6 @@ class NotInSpec extends ObjectBehavior
     public function it_is_an_expression()
     {
         $this->shouldBeAnInstanceOf(SpecificationInterface::class);
-        $this->shouldBeAnInstanceOf(In::class);
     }
 
     public function it_returns_an_expression_func_object(QueryBuilder $queryBuilder, ArrayCollection $parameters, Expr $expr)

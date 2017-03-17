@@ -4,13 +4,13 @@ namespace Rb\Specification\Doctrine\Condition;
 
 use Doctrine\ORM\QueryBuilder;
 use Rb\Specification\Doctrine\AbstractSpecification;
+use Rb\Specification\Doctrine\Helper\ParameterTrait;
+use Rb\Specification\Doctrine\Helper\ValueTrait;
 
 class In extends AbstractSpecification
 {
-    /**
-     * @var mixed
-     */
-    protected $value;
+    use ParameterTrait;
+    use ValueTrait;
 
     /**
      * @param string      $field
@@ -19,7 +19,7 @@ class In extends AbstractSpecification
      */
     public function __construct($field, $value, $dqlAlias = null)
     {
-        $this->value = $value;
+        $this->setValue($value);
 
         parent::__construct($field, $dqlAlias);
     }
@@ -29,22 +29,12 @@ class In extends AbstractSpecification
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
-        $paramName = $this->generateParameterName($queryBuilder);
-        $queryBuilder->setParameter($paramName, $this->value);
+        $paramName = $this->generateParameterName($queryBuilder, 'in');
+        $queryBuilder->setParameter($paramName, $this->getValue());
 
         return (string) $queryBuilder->expr()->in(
             $this->createPropertyWithAlias($dqlAlias),
             sprintf(':%s', $paramName)
         );
-    }
-
-    /**
-     * @param QueryBuilder $queryBuilder
-     *
-     * @return string
-     */
-    protected function generateParameterName(QueryBuilder $queryBuilder)
-    {
-        return sprintf('in_%d', count($queryBuilder->getParameters()));
     }
 }

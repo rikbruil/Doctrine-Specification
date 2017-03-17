@@ -4,9 +4,12 @@ namespace Rb\Specification\Doctrine\Condition;
 
 use Doctrine\ORM\QueryBuilder;
 use Rb\Specification\Doctrine\AbstractSpecification;
+use Rb\Specification\Doctrine\Helper\ParameterTrait;
 
 class Between extends AbstractSpecification
 {
+    use ParameterTrait;
+
     /**
      * @var mixed
      */
@@ -36,8 +39,8 @@ class Between extends AbstractSpecification
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
-        $fromParam = $this->generateParameterName('from', $queryBuilder);
-        $toParam   = $this->generateParameterName('to', $queryBuilder);
+        $fromParam = $this->generateParameterName($queryBuilder, 'from');
+        $toParam   = $this->generateParameterName($queryBuilder, 'to');
 
         $queryBuilder->setParameter($fromParam, $this->from);
         $queryBuilder->setParameter($toParam, $this->to);
@@ -47,16 +50,5 @@ class Between extends AbstractSpecification
             sprintf(':%s', $fromParam),
             sprintf(':%s', $toParam)
         );
-    }
-
-    /**
-     * @param string       $type
-     * @param QueryBuilder $queryBuilder
-     *
-     * @return string
-     */
-    private function generateParameterName($type, QueryBuilder $queryBuilder)
-    {
-        return sprintf('%s_%d', $type, count($queryBuilder->getParameters()));
     }
 }

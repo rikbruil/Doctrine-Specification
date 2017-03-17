@@ -6,9 +6,14 @@ use Doctrine\ORM\Query\Expr\Comparison as DoctrineComparison;
 use Doctrine\ORM\QueryBuilder;
 use Rb\Specification\Doctrine\AbstractSpecification;
 use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
+use Rb\Specification\Doctrine\Helper\ParameterTrait;
+use Rb\Specification\Doctrine\Helper\ValueTrait;
 
 class Comparison extends AbstractSpecification
 {
+    use ParameterTrait;
+    use ValueTrait;
+
     const EQ   = '=';
     const NEQ  = '<>';
     const LT   = '<';
@@ -21,11 +26,6 @@ class Comparison extends AbstractSpecification
      * @var string[]
      */
     protected static $operators = [self::EQ, self::NEQ, self::LT, self::LTE, self::GT, self::GTE, self::LIKE];
-
-    /**
-     * @var string
-     */
-    protected $value;
 
     /**
      * @var string
@@ -53,7 +53,7 @@ class Comparison extends AbstractSpecification
         }
 
         $this->operator = $operator;
-        $this->value    = $value;
+        $this->setValue($value);
 
         parent::__construct($field, $dqlAlias);
     }
@@ -68,25 +68,13 @@ class Comparison extends AbstractSpecification
      */
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
-        $paramName = $this->generateParameterName($queryBuilder);
-        $queryBuilder->setParameter($paramName, $this->value);
+        $paramName = $this->generateParameterName($queryBuilder, 'comparison');
+        $queryBuilder->setParameter($paramName, $this->getValue());
 
         return (string) new DoctrineComparison(
             $this->createPropertyWithAlias($dqlAlias),
             $this->operator,
             sprintf(':%s', $paramName)
         );
-    }
-
-    /**
-     * Return automatically generated parameter name.
-     *
-     * @param QueryBuilder $queryBuilder
-     *
-     * @return string
-     */
-    protected function generateParameterName(QueryBuilder $queryBuilder)
-    {
-        return sprintf('comparison_%d', count($queryBuilder->getParameters()));
     }
 }

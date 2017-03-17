@@ -4,13 +4,11 @@ namespace Rb\Specification\Doctrine\Condition;
 
 use Doctrine\ORM\QueryBuilder;
 use Rb\Specification\Doctrine\AbstractSpecification;
+use Rb\Specification\Doctrine\Helper\ValueTrait;
 
 class IsInstanceOf extends AbstractSpecification
 {
-    /**
-     * @var string
-     */
-    private $className;
+    use ValueTrait;
 
     /**
      * @param string $field
@@ -19,7 +17,7 @@ class IsInstanceOf extends AbstractSpecification
      */
     public function __construct($field, $className, $dqlAlias = null)
     {
-        $this->className = $className;
+        $this->setValue($className);
 
         parent::__construct($field, $dqlAlias);
     }
@@ -31,7 +29,7 @@ class IsInstanceOf extends AbstractSpecification
     {
         return (string) $queryBuilder->expr()->isInstanceOf(
             $this->createPropertyWithAlias($dqlAlias),
-            $this->className
+            $this->getValue()
         );
     }
 }
