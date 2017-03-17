@@ -12,7 +12,7 @@ trait ValueTrait
     /**
      * @return string
      */
-    public function getValue()
+    protected function getValue()
     {
         return $this->value;
     }
@@ -20,7 +20,7 @@ trait ValueTrait
     /**
      * @param mixed $value
      */
-    public function setValue($value)
+    protected function setValue($value)
     {
         $this->value = $value;
     }
