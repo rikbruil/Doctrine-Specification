@@ -13,6 +13,9 @@ The main one is that SpecificationRepository->match() does not return the result
 
 Since I like Doctrine's Paginator object, I wanted to be able to use that in combination with the Specification pattern.
 
+__Note:__ In versions prior to 1.2 it was required to extend the SpecificationRepository class. This is no longer needed since we provide a SpecificationRepositoryTrait that you can use instead.
+The class is still provided for backwards compatibility reasons. There is also the SpecificationAwareInterface that you can use if you need it.
+
 ## Usage
 
 Install the latest version with `composer require rikbruil/doctrine-specification`
@@ -59,7 +62,7 @@ $spec = new Specification([
     )
 ]);
 
-// Note: Advertisement repository is an instance of the SpecificationRepository class
+// Note: Advertisement repository is an instance that uses the SpecificationRepositoryTrait
 return $this->em->getRepository('Advertisement')->match($spec)->execute();
 ```
 

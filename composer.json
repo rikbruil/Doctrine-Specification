@@ -15,8 +15,7 @@
     "psr-4": {"Rb\\Specification\\Doctrine\\": "src/"}
   },
   "autoload-dev": {
-    "psr-4": {"spec\\Rb\\Specification\\Doctrine\\": "spec/"},
-    "files": ["spec/SpecificationRepositoryStub.php"]
+    "psr-4": {"spec\\Rb\\Specification\\Doctrine\\": "spec/"}
   },
   "require": {
     "php": ">=5.5",
@@ -32,7 +31,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "1.2-dev"
+      "dev-master": "1.3-dev"
     }
   },
   "scripts": {

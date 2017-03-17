@@ -11,7 +11,7 @@ use Prophecy\Argument;
 use Rb\Specification\Doctrine\Exception\LogicException;
 use Rb\Specification\Doctrine\Result\ModifierInterface;
 use Rb\Specification\Doctrine\SpecificationInterface;
-use Rb\Specification\Doctrine\SpecificationRepositoryStub;
+use Rb\Specification\Doctrine\SpecificationRepository;
 
 class SpecificationRepositorySpec extends ObjectBehavior
 {
@@ -23,7 +23,7 @@ class SpecificationRepositorySpec extends ObjectBehavior
 
     public function let(EntityManager $entityManager, ClassMetadata $classMetadata)
     {
-        $this->beAnInstanceOf(SpecificationRepositoryStub::class);
+        $this->beAnInstanceOf(SpecificationRepository::class);
         $this->beConstructedWith($entityManager, $classMetadata);
     }
 
