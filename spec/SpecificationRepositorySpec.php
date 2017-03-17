@@ -22,6 +22,7 @@ class SpecificationRepositorySpec extends ObjectBehavior
 
     public function let(EntityManager $entityManager, ClassMetadata $classMetadata)
     {
+        $this->beAnInstanceOf('Rb\Specification\Doctrine\SpecificationRepositoryStub');
         $this->beConstructedWith($entityManager, $classMetadata);
     }
 
