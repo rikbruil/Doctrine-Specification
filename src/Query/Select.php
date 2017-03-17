@@ -3,7 +3,7 @@
 namespace Rb\Specification\Doctrine\Query;
 
 use Doctrine\ORM\QueryBuilder;
-use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
+use Rb\Specification\Doctrine\Helper\TypeCheckerTrait;
 use Rb\Specification\Doctrine\SpecificationInterface;
 
 /**
@@ -11,20 +11,17 @@ use Rb\Specification\Doctrine\SpecificationInterface;
  */
 class Select implements SpecificationInterface
 {
+    use TypeCheckerTrait;
+
     const SELECT     = 'select';
     const ADD_SELECT = 'addSelect';
 
-    protected static $types = [self::SELECT, self::ADD_SELECT];
+    protected $validTypes = [self::SELECT, self::ADD_SELECT];
 
     /**
      * @var string|array
      */
     protected $select;
-
-    /**
-     * @var string
-     */
-    protected $type;
 
     /**
      * @param string|array $select
@@ -42,24 +39,6 @@ class Select implements SpecificationInterface
     public function modify(QueryBuilder $queryBuilder, $dqlAlias)
     {
         call_user_func_array([$queryBuilder, $this->type], [$this->select]);
-    }
-
-    /**
-     * @param string $type
-     *
-     * @throws InvalidArgumentException
-     */
-    public function setType($type)
-    {
-        if (! in_array($type, self::$types, true)) {
-            throw new InvalidArgumentException(sprintf(
-                '"%s" is not a valid type! Valid types: %s',
-                $type,
-                implode(', ', self::$types)
-            ));
-        }
-
-        $this->type = $type;
     }
 
     /**

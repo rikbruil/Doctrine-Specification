@@ -4,21 +4,20 @@ namespace Rb\Specification\Doctrine\Query;
 
 use Doctrine\ORM\QueryBuilder;
 use Rb\Specification\Doctrine\AbstractSpecification;
-use Rb\Specification\Doctrine\Exception\InvalidArgumentException;
+use Rb\Specification\Doctrine\Helper\TypeCheckerTrait;
 
 /**
  * @author  Kyle Tucker <kyleatucker@gmail.com>
  */
 class GroupBy extends AbstractSpecification
 {
+    use TypeCheckerTrait;
+
     const GROUP_BY     = 'groupBy';
     const ADD_GROUP_BY = 'addGroupBy';
 
     /** @var string[] */
-    protected static $types = [self::GROUP_BY, self::ADD_GROUP_BY];
-
-    /** @var string */
-    protected $type;
+    protected $validTypes = [self::GROUP_BY, self::ADD_GROUP_BY];
 
     /**
      * Constructor.
@@ -44,23 +43,5 @@ class GroupBy extends AbstractSpecification
                 $this->createPropertyWithAlias($dqlAlias),
             ]
         );
-    }
-
-    /**
-     * @param string $type
-     *
-     * @throws InvalidArgumentException
-     */
-    public function setType($type)
-    {
-        if (! in_array($type, self::$types, true)) {
-            throw new InvalidArgumentException(sprintf(
-                '"%s" is not a valid type! Valid types: %s',
-                $type,
-                implode(', ', self::$types)
-            ));
-        }
-
-        $this->type = $type;
     }
 }
