@@ -27,6 +27,8 @@ class Specification extends ArrayCollection implements SpecificationInterface
      */
     public function __construct(array $elements = [])
     {
+        parent::__construct();
+
         $this->setChildren($elements);
     }
 

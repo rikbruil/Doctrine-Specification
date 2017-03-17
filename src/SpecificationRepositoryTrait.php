@@ -18,13 +18,14 @@ trait SpecificationRepositoryTrait
     protected $dqlAlias = 'e';
 
     /**
-     * @see SpecificationAware::match()
+     * @see SpecificationAwareInterface::match()
      *
      * @param SpecificationInterface $specification
      * @param ModifierInterface|null $modifier
      *
-     * @return Query
      * @throws LogicException
+     *
+     * @return Query
      */
     public function match(SpecificationInterface $specification, ModifierInterface $modifier = null)
     {

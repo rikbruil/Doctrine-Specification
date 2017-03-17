@@ -25,6 +25,14 @@ abstract class AbstractSpecification implements SpecificationInterface
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function isSatisfiedBy($value)
+    {
+        return true;
+    }
+
+    /**
      * Create a formatted string for the given property prefixed with the DQL alias.
      *
      * @param string $dqlAlias
@@ -55,13 +63,5 @@ abstract class AbstractSpecification implements SpecificationInterface
         }
 
         return sprintf('%s.%s', $dqlAlias, $value);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function isSatisfiedBy($value)
-    {
-        return true;
     }
 }
