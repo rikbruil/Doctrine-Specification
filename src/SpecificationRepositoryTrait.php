@@ -18,7 +18,7 @@ trait SpecificationRepositoryTrait
     protected $dqlAlias = 'e';
 
     /**
-     * @see SpecificationAware::match()
+     * @see SpecificationAwareInterface::match()
      *
      * @param SpecificationInterface $specification
      * @param ModifierInterface|null $modifier

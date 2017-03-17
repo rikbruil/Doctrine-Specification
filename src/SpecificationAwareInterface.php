@@ -8,7 +8,7 @@ use Rb\Specification\Doctrine\Result\ModifierInterface;
 /**
  * SpecificationAware can be used to implement custom repository.
  */
-interface SpecificationAware
+interface SpecificationAwareInterface
 {
     /**
      * Get the query after matching with given specification.
