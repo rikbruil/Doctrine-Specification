@@ -14,12 +14,12 @@ class OrderBy extends AbstractSpecification
     const ASC  = 'ASC';
     const DESC = 'DESC';
 
-    private static $validOrder = [self::ASC, self::DESC];
-
     /**
      * @var string
      */
     protected $order;
+
+    private static $validOrder = [self::ASC, self::DESC];
 
     /**
      * @param string      $field
