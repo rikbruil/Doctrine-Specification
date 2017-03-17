@@ -14,7 +14,7 @@ The main one is that SpecificationRepository->match() does not return the result
 Since I like Doctrine's Paginator object, I wanted to be able to use that in combination with the Specification pattern.
 
 __Note:__ In versions prior to 1.2 it was required to extend the SpecificationRepository class. This is no longer needed since we provide a SpecificationRepositoryTrait that you can use instead.
-The class is still provided for backwards compatibility reasons.
+The class is still provided for backwards compatibility reasons. There is also the SpecificationAwareInterface that you can use if you need it.
 
 ## Usage
 
