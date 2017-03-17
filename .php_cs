@@ -1,22 +1,26 @@
 <?php
 
-$finder = (new Symfony\Component\Finder\Finder())
-    ->files()
-    ->name('*.php')
-    ->in(__DIR__ . '/src')
-    ->in(__DIR__ . '/spec');
+$finder = PhpCsFixer\Finder::create()
+    ->exclude(['vendor', 'build'])
+    ->in(__DIR__);
 
-return Symfony\CS\Config::create()
-    ->fixers([
-        'align_double_arrow',
-        'align_equals',
-        'concat_with_spaces',
-        'header_comment',
-        'logical_not_operators_with_successor_space',
-        'multiline_spaces_before_semicolon',
-        'ordered_use',
-        'phpdoc_order',
-        'strict',
-        'strict_param',
+return PhpCsFixer\Config::create()
+    ->setRiskyAllowed(true)
+    ->setRules([
+        '@Symfony' => true,
+        'binary_operator_spaces' => [
+            'align_double_arrow' => true,
+            'align_equals' => true,
+        ],
+        'concat_space' => ['spacing' => 'one'],
+        'not_operator_with_successor_space' => true,
+        'no_multiline_whitespace_before_semicolons' => true,
+        'no_useless_else' => true,
+        'no_useless_return' => true,
+        'ordered_class_elements' => true,
+        'ordered_imports' => true,
+        'phpdoc_order' => true,
+        'strict_comparison' => true,
+        'strict_param' => true,
     ])
-    ->finder($finder);
+    ->setFinder($finder);
